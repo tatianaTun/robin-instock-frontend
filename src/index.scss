@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0rem;
+  padding: 0rem;
+  // font-family:
+}
+
+body {
+  margin: 0;
+ font-family: "Titillium";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
