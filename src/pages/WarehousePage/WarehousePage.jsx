@@ -6,7 +6,7 @@ import axios from "axios";
 import { baseURL } from "../../consts";
 
 function WarehousePage() {
-  const [warehouseData, setwarehouseData] = useState(null);
+  const [warehouseData, setwarehouseData] = useState([]);
 
   //fetch list of warehouse data
   useEffect(() => {
