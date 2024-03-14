@@ -1,11 +1,22 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.scss';
 
-function App() {
-  return (<div>
-        <h1>The Quick Borown Fox Jumps over the lazy dog</h1>
-        <p>The Quick Borown Fox Jumps over the lazy dog</p>
 
-  </div>
+function App() {
+  return (
+    <BrowserRouter>
+  {/* <Header /> */}
+        <Routes>
+
+          <Route path="/warehouses" element={<WarehousesPage  />} />
+          <Route path="/warehouses/:warehouseId" element={<WarehousePage />} />
+          <Route path="/inventories" element={<InventoriesPage />} />
+          <Route path="/inventories/:inventoriesId" element={<InventoryPage />} />
+
+
+        </Routes>
+  </BrowserRouter>
   );
 }
 
