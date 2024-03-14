@@ -1,8 +1,7 @@
 import "./WarehousePage.scss";
-import WarehouseList from "../../components/warehouseList/warehouseList";
-import DeleteWarehouseModal from "../../components/deleteWarehouseModal/deleteWarehouseModal";
+import WarehouseList from "../../components/WarehouseList/WarehouseList.jsx";
+// import DeleteWarehouseModal from "../../components/DeleteWarehouseModal/DeleteWarehouseModal";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { baseURL } from "../../consts";
 
@@ -14,7 +13,9 @@ function WarehousePage() {
     const getWarehouseList = async () => {
       try {
         const result = await axios.get(`${baseURL}/warehouses`);
+        console.log(result);
         setwarehouseData(result.data);
+        console.log(result.data);
       } catch (error) {
         console.log(error);
       }
@@ -25,7 +26,7 @@ function WarehousePage() {
 
   return (
     <>
-      <div>
+      <div className="home">
         <WarehouseList warehouseData={warehouseData} />
       </div>
     </>
