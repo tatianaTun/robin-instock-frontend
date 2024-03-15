@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { baseURL } from "../../consts";
 
 function EditInventory() {
   const navigate = useNavigate(); //to navigate back to the inventory details page
@@ -56,7 +57,7 @@ function EditInventory() {
 
   const getInventory = async () => {
     try {
-      const requestUrl = `http://localhost:8080/inventories/${inventoriesId}`;
+      const requestUrl = `${baseURL}/inventories/${inventoriesId}`;
 
       const result = await axios.get(requestUrl);
       console.log(result.data);
@@ -78,7 +79,7 @@ function EditInventory() {
 
   const getWarehouse = async () => {
     try {
-      const requestUrl = `http://localhost:8080/warehouses/${inventory.warehouse_id}`;
+      const requestUrl = `${baseURL}/warehouses/${inventory.warehouse_id}`;
 
       const result = await axios.get(requestUrl);
       console.log(result.data.warehouse_name);
@@ -101,7 +102,7 @@ function EditInventory() {
 
   const editInventory = async (inventoryData) => {
     try {
-      const requestUrl = `http://localhost:8080/inventories/${inventoriesId}`;
+      const requestUrl = `${baseURL}/inventories/${inventoriesId}`;
       const result = await axios.put(requestUrl, inventoryData);
       console.log(result.data);
     } catch (error) {
