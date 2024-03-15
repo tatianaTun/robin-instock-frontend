@@ -1,0 +1,14 @@
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        position: absolute;
+        right: 16px;
+    }
+
+    >input {
+        padding-right: 42px;
+    }
+}
