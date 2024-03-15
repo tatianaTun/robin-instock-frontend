@@ -6,14 +6,20 @@ import "./InventoryPage.scss";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 
 function InventoryPage({ warehouseData }) {
-  const { id } = useParams();
-  console.log(id);
+  console.log(warehouseData);
+  const { inventoriesId } = useParams();
+  console.log(inventoriesId);
   const [inventoryItem, setInventoryItem] = useState(null);
 
+  // const [inventoriesData, setInventoriesData] = useState([]);
+
+  //fetch list of inventories data by id
   useEffect(() => {
     const getInventoryDetails = async () => {
       try {
-        const result = await axios.get(`${baseURL}/inventories/${id}`);
+        const result = await axios.get(
+          `${baseURL}/inventories/${inventoriesId}`
+        );
         console.log(result);
         setInventoryItem(result.data);
         console.log(result.data);
@@ -23,9 +29,22 @@ function InventoryPage({ warehouseData }) {
     };
 
     getInventoryDetails();
-  }, [id]);
+  }, [inventoriesId]);
 
-  if (!inventoryItem) {
+  //fetch list of inventories data
+  // useEffect(() => {
+  //   const getInventoryList = async () => {
+  //     try {
+  //       const result = await axios.get(`${baseURL}/inventories`);
+  //       console.log(result);
+  //       setInventoriesData(result.data);
+  //     } catch (error) {}
+  //   };
+
+  //   getInventoryList();
+  // }, []);
+
+  if (!inventoryItem || !warehouseData) {
     return <div>Loading...</div>;
   }
 
@@ -33,8 +52,9 @@ function InventoryPage({ warehouseData }) {
     <>
       <div className="home">
         <InventoryDetails
-          inventoryId={inventoryItem}
+          inventoryItem={inventoryItem}
           warehouseData={warehouseData}
+          inventoriesId={inventoriesId}
         />
       </div>
     </>

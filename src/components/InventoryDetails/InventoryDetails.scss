@@ -1,3 +1,231 @@
 @use "../../styles//partials/variables" as *;
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
+
+.inventorydetails {
+  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  @include mobile-margin-left-right;
+  @include tablet {
+    @include tablet-margin-left-right;
+  }
+
+  @include desktop {
+    @include desktop-margin-left-right;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $cloud;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 24px;
+    @include desktop {
+      padding-bottom: 24px;
+      padding-left: 36px;
+      padding-right: 36px;
+      padding-top: 24px;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__title {
+    color: $instock-black;
+  }
+  &__icon-background {
+    border-radius: 30px;
+    background-color: $instock-indigo;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      display: none;
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__icon-background--modify {
+    display: none;
+    @include tablet {
+      border-radius: 20px;
+      background-color: $instock-indigo;
+      width: 80px;
+      height: 38px;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include tabletanddesktop-labels-link-and-buttons-H3;
+    }
+    @include desktop {
+      border-radius: 20px;
+      background-color: $instock-indigo;
+      width: 80px;
+      height: 38px;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include tabletanddesktop-labels-link-and-buttons-H3;
+    }
+  }
+
+  &__edit {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__edit--modify {
+    @include tablet {
+      width: 21px;
+      height: 21px;
+    }
+    @include desktop {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 40px;
+    width: 70%;
+    @include tablet {
+      width: 100%;
+      gap: 80px;
+    }
+    @include desktop {
+      width: 100%;
+      gap: 80px;
+    }
+  }
+
+  &__content {
+    padding-bottom: $padding-between-components;
+    padding-top: $padding-between-components;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+    }
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      padding-left: 36px;
+      padding-right: 36px;
+    }
+  }
+
+  &__section {
+    @include tablet {
+      width: 40%;
+    }
+    @include desktop {
+      width: 45%;
+    }
+  }
+
+  &__divider {
+    @include tablet {
+      height: 12vh;
+      width: 1px;
+      background-color: $cloud;
+    }
+    @include desktop {
+      height: 12vh;
+      width: 1px;
+      background-color: $cloud;
+    }
+  }
+
+  &__subtitle {
+    color: $slate;
+    @include mobile-table-header-H4;
+    font-weight: 600;
+    padding-bottom: $padding-between-subcomponents;
+    @include tablet {
+      @include tabletanddesktop-table-header-H4;
+    }
+    @include desktop {
+      @include tabletanddesktop-table-header-H4;
+    }
+  }
+
+  &__body {
+    @include mobile-body-medium-P2;
+    color: black;
+    font-weight: 400;
+    @include tablet {
+      @include tabletanddesktop-body-medium-P2;
+    }
+    @include desktop {
+      @include tabletanddesktop-body-medium-P2;
+    }
+  }
+
+  &__header {
+    padding-bottom: 16px;
+  }
+
+  &__body--in-stock {
+    color: $green;
+    font-weight: 700;
+    height: 24px;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: rgba($green, 0.07);
+    @include tablet {
+      height: 26px;
+    }
+    @include desktop {
+      height: 26px;
+    }
+  }
+
+  &__body--out-of-stock {
+    color: $red;
+    font-weight: 700;
+    height: 24px;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: rgba($red, 0.07);
+
+    @include tablet {
+      height: 26px;
+    }
+    @include desktop {
+      height: 26px;
+    }
+  }
+}

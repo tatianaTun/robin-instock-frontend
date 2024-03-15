@@ -1,4 +1,4 @@
-import "./WarehousePage.scss";
+import "./WarehousesPage.scss";
 import WarehouseList from "../../components/WarehouseList/WarehouseList.jsx";
 // import DeleteWarehouseModal from "../../components/DeleteWarehouseModal/DeleteWarehouseModal";
 import { useState, useEffect } from "react";
