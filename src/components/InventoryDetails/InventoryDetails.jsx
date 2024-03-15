@@ -2,7 +2,7 @@ import React from "react";
 import "./InventoryDetails.scss";
 import editModifiedIcon from "../../assets/Icons/edit-modified-24px.svg";
 
-function InventoryDetails({ inventoryId }) {
+function InventoryDetails({ inventoryId, warehouseData }) {
   return (
     <div className="inventory-details">
       <section className="inventory-details-content">
@@ -24,7 +24,7 @@ function InventoryDetails({ inventoryId }) {
         </div>
         <div className="inventory-details-warehouse">
           <h3>Warehouse:</h3>
-          <p>{inventoryId.warehouse_id}</p>
+          <p>{inventoryId.warehouse_name}</p>
         </div>
       </section>
     </div>

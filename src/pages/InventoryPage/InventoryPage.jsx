@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import "./InventoryPage.scss";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 
-function InventoryPage() {
+function InventoryPage({ warehouseData }) {
   const { id } = useParams();
   console.log(id);
   const [inventoryItem, setInventoryItem] = useState(null);
@@ -32,7 +32,10 @@ function InventoryPage() {
   return (
     <>
       <div className="home">
-        <InventoryDetails inventoryId={inventoryItem} />
+        <InventoryDetails
+          inventoryId={inventoryItem}
+          warehouseData={warehouseData}
+        />
       </div>
     </>
   );

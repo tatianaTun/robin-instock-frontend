@@ -127,6 +127,12 @@
     }
   }
 
+  &__container:hover {
+    @include desktop {
+      background-color: lighten($instock-indigo, 43%);
+    }
+  }
+
   &__main-group {
     display: flex;
     justify-content: space-between;
@@ -230,7 +236,8 @@
   }
 
   &__sort:hover {
-    color: $instock-indigo;
+    filter: brightness(0) saturate(100%) invert(27%) sepia(85%) saturate(3000%)
+      hue-rotate(221deg) brightness(100%) contrast(100%);
   }
 
   &__name {
@@ -254,7 +261,7 @@
 
   &__body--hover:hover {
     text-decoration: underline;
-    @include mobile-body-medium-P2;
+    // @include mobile-body-medium-P2;
     @include tablet {
       width: 70%;
     }
