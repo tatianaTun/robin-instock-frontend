@@ -1,0 +1,50 @@
+@import './colors';
+@import './mixins';
+
+* {
+    color: $primary-text-color;
+    box-sizing: border-box;
+}
+
+.form-input {
+    height: 36px;
+    width: 100%;
+    padding: 0 16px;
+    border: none;
+    border-radius: 20px;
+    outline: 1px solid $border-color;
+}
+
+.cta-button {
+    height: 36px;
+    padding: 0 16px;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 20px;
+    background-color: $primary-background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.primary {
+        background-color: $primary-color;
+        color: $white-color;
+        border: none;
+
+        &:hover {
+            background-color: $secondary-background-color;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+@include tablet {
+    .cta-button {
+        height: 38px;
+        width: auto;
+    }
+}
