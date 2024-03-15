@@ -3,7 +3,7 @@ import WarehouseList from "../../components/WarehouseList/WarehouseList.jsx";
 // import DeleteWarehouseModal from "../../components/DeleteWarehouseModal/DeleteWarehouseModal";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { baseURL } from "../../consts";
+import { baseURL } from "../../consts.js";
 
 function WarehousePage() {
   const [warehouseData, setwarehouseData] = useState([]);

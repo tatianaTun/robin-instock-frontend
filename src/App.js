@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import WarehousesPage from "./pages/WarehousePage/WarehousePage";
+import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 
 import "./App.scss";
 

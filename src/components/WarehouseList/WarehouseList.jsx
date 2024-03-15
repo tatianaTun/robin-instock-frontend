@@ -1,7 +1,6 @@
 import "./WarehouseList.scss";
 import searchicon from "../../assets/Icons/search-24px.svg";
 import sort from "../../assets/Icons/sort-24px.svg";
-import arrowback from "../../assets/Icons/arrow_back-24px.svg";
 import chevronright from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
@@ -9,82 +8,145 @@ import editIcon from "../../assets/Icons/edit-24px.svg";
 function WarehouseList({ warehouseData }) {
   return (
     <main className="warehouselist">
-      <h1 className="warehouselist__title">Warehouses</h1>
-      <div className="warehouselist__search">
-        <input
-          className="warehouselist__input"
-          type="search"
-          name="input"
-          id="searchinput"
-          placeholder="Search..."
-          required
-        />
-        <img
-          src={searchicon}
-          alt="search icon"
-          className="warehouselist__icon"
-        />
-      </div>
+      <section className="warehouselist__nav">
+        <h1 className="warehouselist__title">Warehouses</h1>
+        <div className="warehouselist__search">
+          <input
+            className="warehouselist__input"
+            type="search"
+            name="input"
+            id="searchinput"
+            placeholder="Search..."
+            required
+          />
+          <img
+            className="warehouselist__icon"
+            src={searchicon}
+            alt="search icon"
+          />
+        </div>
+        {/* <link to="/warehouse/add"> */}
+        <div className="warehouselist__section">
+          <button type="submit" className="warehouselist__button">
+            + Add New Warehouse
+          </button>
+        </div>
+        {/* </link> */}
+      </section>
 
-      <div className="warehouselist__section">
-        <button type="submit" className="warehouselist__button">
-          + Add New Warehouse
-        </button>
+      <div className="warehouselist__content">
+        <div className="warehouselist__header--none">
+          <div className="warehouselist__subtitle--none">WAREHOUSE</div>
+          <img src={sort} alt="sort icon" className="warehouselist__sort" />
+        </div>
+
+        <div className="warehouselist__header--none">
+          <p className="warehouselist__subtitle--none">ADDRESS</p>
+          <img src={sort} alt="sort icon" className="warehouselist__sort" />
+        </div>
+
+        <div className="warehouselist__header--none">
+          <p className="warehouselist__subtitle--none">CONTACT NAME</p>
+          <img src={sort} alt="sort icon" className="warehouselist__sort" />
+        </div>
+        <div className="warehouselist__header--none">
+          <p className="warehouselist__subtitle--none">CONTACT INFORMATION</p>
+          <img src={sort} alt="sort icon" className="warehouselist__sort" />
+        </div>
+        <p className="warehouselist__subtitle--none">ACTIONS</p>
       </div>
 
       {warehouseData.map((warehouse) => (
         <div key={warehouse.id} className="warehouselist__container">
-          <div className="warehouselist__group">
-            <div className="warehouselist__header">
-              <div className="warehouselist__subtitle">WAREHOUSE</div>
-              <img src={sort} alt="sort icon" className="warehouselist__sort" />
-            </div>
+          <div className="warehouselist__main-group">
+            <section className="warehouselist__division">
+              <div className="warehouselist__group">
+                <div className="warehouselist__header">
+                  <div className="warehouselist__subtitle">WAREHOUSE</div>
+                  <img
+                    src={sort}
+                    alt="sort icon"
+                    className="warehouselist__sort"
+                  />
+                </div>
 
-            <div className="warehouselist__name">
-              <p className="warehouselist__body">{warehouse.warehouse_name}</p>
+                {/* <Link
+            to={`/warehouse/${warehouse.id}`}*/}
+                <div className="warehouselist__name">
+                  <p className="warehouselist__body--hover">
+                    {warehouse.warehouse_name}
+                  </p>
+                  <img
+                    src={chevronright}
+                    alt="chevron right icon"
+                    className="warehouselist__arrow"
+                  />
+                </div>
+                {/* </Link> */}
+              </div>
+
+              <div className="warehouselist__group">
+                <div className="warehouselist__header">
+                  <p className="warehouselist__subtitle">ADDRESS</p>
+                  <img
+                    src={sort}
+                    alt="sort icon"
+                    className="warehouselist__sort"
+                  />
+                </div>
+
+                <p className="warehouselist__body">
+                  {warehouse.address} {warehouse.city}, {warehouse.country}
+                </p>
+              </div>
+            </section>
+
+            <section className="warehouselist__division">
+              <div className="warehouselist__group">
+                <div className="warehouselist__header">
+                  <p className="warehouselist__subtitle">CONTACT NAME</p>
+                  <img
+                    src={sort}
+                    alt="sort icon"
+                    className="warehouselist__sort"
+                  />
+                </div>
+
+                <p className="warehouselist__body">{warehouse.contact_name}</p>
+              </div>
+
+              <div className="warehouselist__group">
+                <div className="warehouselist__header">
+                  <p className="warehouselist__subtitle">CONTACT INFORMATION</p>
+                  <img
+                    src={sort}
+                    alt="sort icon"
+                    className="warehouselist__sort"
+                  />
+                </div>
+
+                <p className="warehouselist__body">{warehouse.contact_phone}</p>
+                <p className="warehouselist__body">{warehouse.contact_email}</p>
+              </div>
+            </section>
+          </div>
+
+          <div className="warehouselist__action">
+            <p className="warehouselist__subtitle--display">ACTIONS</p>
+            <div className="warehouselist__images">
               <img
-                src={chevronright}
-                alt="chevron right icon"
-                className="warehouselist__arrow"
+                src={deleteIcon}
+                alt="delete icon"
+                className="warehouselist__img"
               />
+              {/* <link to="/warehouse/edit"> */}
+              <img
+                src={editIcon}
+                alt="edit icon"
+                className="warehouselist__img"
+              />
+              {/* </link> */}
             </div>
-          </div>
-
-          <div className="warehouselist__address">
-            <p className="warehouselist__subtitle">ADDRESS</p>
-            <img src={sort} alt="sort icon" className="warehouselist__sort" />
-            <p className="warehouselist__body">{warehouse.address}</p>
-            <p className="warehouselist__body">{warehouse.city}</p>
-            <p className="warehouselist__body">{warehouse.country}</p>
-          </div>
-
-          <div className="warehouselist__group">
-            <div className="warehouselist__contact-name">
-              <p className="warehouselist__subtitle">CONTACT NAME</p>
-              <img src={sort} alt="sort icon" className="warehouselist__sort" />
-              <p className="warehouselist__body">{warehouse.contact_name}</p>
-            </div>
-
-            <div className="warehouselist__contact-info">
-              <p className="warehouselist__subtitle">CONTACT INFORMATION</p>
-              <img src={sort} alt="sort icon" className="warehouselist__sort" />
-              <p className="warehouselist__body">{warehouse.contact_phone}</p>
-              <p className="warehouselist__body">{warehouse.contact_email}</p>
-            </div>
-          </div>
-
-          <div className="warehouselist__div">
-            <p className="warehouselist__subtitle">ACTIONS</p>
-            <img
-              src={deleteIcon}
-              alt="delete icon"
-              className="warehouselist__img"
-            />
-            <img
-              src={editIcon}
-              alt="edit icon"
-              className="warehouselist__img"
-            />
           </div>
         </div>
       ))}
@@ -93,129 +155,3 @@ function WarehouseList({ warehouseData }) {
 }
 
 export default WarehouseList;
-
-//.........................................................................................//
-
-// import "./WarehouseList.scss";
-// import searchicon from "../../assets/Icons/search-24px.svg";
-// import sort from "../../assets/Icons/sort-24px.svg";
-// import arrowback from "../../assets/Icons/arrow_back-24px.svg";
-// import chevronright from "../../assets/Icons/chevron_right-24px.svg";
-// import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
-// import editIcon from "../../assets/Icons/edit-24px.svg";
-
-// function WarehouseList(warehouseData) {
-//   console.log(warehouseData);
-//   return (
-//     <main className="warehouselist">
-//       <h1 className="warehouselist__title">Warehouses</h1>
-//       <div className="warehouselist__search">
-//         <input
-//           className="warehouselist__input"
-//           type="search"
-//           name="input"
-//           id="searchinput"
-//           placeholder="Search..."
-//           required
-//         />
-
-//         <img
-//           src={searchicon}
-//           alt="search icon"
-//           className="warehouselist__icon"
-//         />
-//       </div>
-
-//       {/* <link to=""> */}
-//       <div className="warehouselist__section">
-//         <button type="submit" className="warehouselist__button">
-//           + Add New Warehouse
-//         </button>
-//       </div>
-
-//       <div className="warehouselist__container">
-//         <div className="warehouselist__group">
-//           <div className="warehouselist__header">
-//             <div className="warehouselist__subtitle">WAREHOUSE</div>
-//             <img src={sort} alt="sort icon" className="warehouselist__sort" />
-//           </div>
-
-//           <div className="warehouselist__name">
-//             <p className="warehouselist__body--color">
-//               {warehouseData.warehouse_name}
-//             </p>
-//             <img
-//               src={chevronright}
-//               alt="chevron right icon"
-//               className="warehouselist__arrow"
-//             ></img>
-//           </div>
-//         </div>
-
-//         <div className="warehouselist__address">
-//           <p className="warehouselist__subtitle">ADDRESS</p>
-//           <img src={sort} alt="sort icon" className="warehouselist__sort" />
-//           <p className="warehouselist__body">{warehouseData.address}</p>
-//           {warehouseData.city}
-//           {warehouseData.country}
-//         </div>
-//       </div>
-
-//       <div className="warehouselist__group">
-//         <div className="warehouselist__contact-name">
-//           <p className="warehouselist__subtitle">CONTACT NAME</p>
-//           <img src={sort} alt="sort icon" className="warehouselist__sort" />
-//           <p className="warehouselist__body">
-//             {/* {warehouseData.contact_name} */}
-//           </p>
-//         </div>
-
-//         <div className="warehouselist__contact-info">
-//           <p className="warehouselist__subtitle">CONTACT INFORMATION</p>
-//           <img src={sort} alt="sort icon" className="warehouselist__sort" />
-//           <p className="warehouselist__body">
-//             {/* {warehouseData.contact_phone} */}
-//             {/* {warehouseData.contact_email0} */}
-//           </p>
-//         </div>
-//       </div>
-
-//       <div className="warehouselist__div">
-//         <p className="warehouselist__subtitle">ACTIONS</p>
-//         <img
-//           src={deleteIcon}
-//           alt="chevron right icon"
-//           className="warehouselist__img"
-//         ></img>
-//         <img
-//           src={editIcon}
-//           alt="chevron right icon"
-//           className="warehouselist__img"
-//         ></img>
-//       </div>
-
-//       {/* </link> */}
-
-//       {/* <Link
-//             to={`/warehouse/${warehouse.id}`}
-//           > */}
-//       {/* </Link> */}
-
-//       {/* {warehouseData.map((warehouse) => (
-//         <WarehouseList
-//           key={warehouse.id}
-//           warehousename={warehouse.warehouse_name}
-//           address={warehouse.address}
-//           city={warehouse.city}
-//           country={warehouse.country}
-//           contactname={warehouse.contact_name}
-//           position={warehouse.contact_position}
-//           phone={warehouse.contact_phone}
-//           email={warehouse.contact_email}
-//         />
-//       ))} */}
-//     </main>
-//   );
-// }
-
-// export default WarehouseList;

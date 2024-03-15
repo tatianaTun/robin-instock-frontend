@@ -2,14 +2,12 @@
 @use "./styles/partials/fonts" as *;
 @use "./styles/partials/mixins" as *;
 
-
 *,
 *::before,
 *::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
- 
 }
 .App {
   text-align: center;
