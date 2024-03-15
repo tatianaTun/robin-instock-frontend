@@ -3,33 +3,34 @@ import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 import { Link } from "react-router-dom";
 import './InventoryCard.scss';
+import InventoryStatus from '../InventoryStatus/InventoryStatus';
 
-function InventoryCard() {
+function InventoryCard({ inventory }) {
     return (
         <div className="inventory-card">
             <div className='inventory-card__content'>
                 <div>
                     <div className='inventory-card__field'>
                         <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-                        <Link to='/' className="inventory-card__value">Television <img src={forwardIcon} alt="" /></Link>
+                        <Link to='/' className="inventory-card__value">{inventory.item_name} <img src={forwardIcon} alt="" /></Link>
                     </div>
                     <div className='inventory-card__field'>
-                        <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-                        <p className="inventory-card__value">Electronics</p>
+                        <h3 className="inventory-card__label">CATEGORY</h3>
+                        <p className="inventory-card__value">{inventory.category}</p>
                     </div>
                 </div>
                 <div>
                     <div className='inventory-card__field'>
-                        <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-                        <p className="inventory-card__value">Electronics</p>
+                        <h3 className="inventory-card__label">STATUS</h3>
+                        <p className="inventory-card__value"><InventoryStatus status={inventory.status} /></p>
                     </div>
                     <div className='inventory-card__field'>
-                        <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-                        <p className="inventory-card__value">Electronics</p>
+                        <h3 className="inventory-card__label">QTY</h3>
+                        <p className="inventory-card__value">{inventory.quantity}</p>
                     </div>
                     <div className='inventory-card__field'>
-                        <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-                        <p className="inventory-card__value">Electronics</p>
+                        <h3 className="inventory-card__label">WAREHOUSE</h3>
+                        <p className="inventory-card__value">{inventory.warehouse_name}</p>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 
-import InventoryList from './components/InventoryList/InventoryList';
+import InventoryPage from './pages/InventoryPage/InventoryPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<InventoryList />} />
-        <Route path="/inventories" element={<InventoryList />} />
+        <Route path="/" element={<InventoryPage />} />
+        <Route path="/inventories" element={<InventoryPage />} />
       </Routes>
     </BrowserRouter>
   );
