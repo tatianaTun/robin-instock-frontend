@@ -4,10 +4,14 @@ function DeleteWarehouseModal() {
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Are you sure you want to delete this warehouse?</h2>
+        <h1>Delete {warehouses.id} warehouse?</h1>
+        <h2>
+          Please confirm that you'd like to delete the {warehouses.id} from the
+          list of warehouses. You won't be able to undo this action.
+        </h2>
         <div className="modal-buttons">
-          <button className="modal-button">Yes</button>
-          <button className="modal-button">No</button>
+          <button className="modal-button">Cancel</button>
+          <button className="modal-button">Delete</button>
         </div>
       </div>
     </div>

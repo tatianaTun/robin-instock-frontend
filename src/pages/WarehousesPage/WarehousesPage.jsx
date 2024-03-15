@@ -13,12 +13,8 @@ function WarehousePage() {
     const getWarehouseList = async () => {
       try {
         const result = await axios.get(`${baseURL}/warehouses`);
-        console.log(result);
         setwarehouseData(result.data);
-        console.log(result.data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
 
     getWarehouseList();
