@@ -1,0 +1,255 @@
+import { useNavigate } from "react-router-dom";
+import "./EditInventory.scss";
+import backIcon from "../../assets/Icons/arrow_back-24px.svg";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+
+function EditInventory() {
+  const navigate = useNavigate(); //to navigate back to the inventory details page
+  const { inventoriesId } = useParams();
+
+  const categoryList = [
+    "Electronics",
+    "Gear",
+    "Apparel",
+    "Accessories",
+    "Health",
+  ];
+
+  const [inventory, setInventory] = useState(null);
+  const [item_name, setItem_name] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [warehouse_id, setWarehouse_id] = useState(null);
+  const [quantity, setQuantity] = useState(0);
+
+  const [warehouse, setWarehouse] = useState(null);
+  const [warehousesList, setWarehouseList] = useState([]);
+
+  //Validation errors
+  const [errors, setErrors] = useState({});
+  // Validation rules for each input field
+  const validateInputs = () => {
+    const errors = {};
+    if (!item_name.trim()) {
+      errors.item_name = "Item name is required";
+    }
+    if (!description.trim()) {
+      errors.description = "Description is required";
+    }
+    if (!category) {
+      errors.category = "Category is required";
+    }
+    if (!status) {
+      errors.status = "Status is required";
+    }
+    if (status === "In stock" && !quantity.trim()) {
+      errors.quantity = "Quantity is required for items in stock";
+    }
+    setErrors(errors);
+    console.log(errors);
+    return Object.keys(errors).length === 0; //Checks if this is true or false.
+  };
+
+  const getInventory = async () => {
+    try {
+      const requestUrl = `http://localhost:8080/inventories/${inventoriesId}`;
+
+      const result = await axios.get(requestUrl);
+      console.log(result.data);
+      if (inventory === null) {
+        setInventory(result.data);
+      }
+      setItem_name(inventory.item_name);
+      setDescription(inventory.description);
+      setCategory(inventory.category);
+      setStatus(inventory.status);
+      setWarehouse_id(inventory.warehouse_id);
+      setQuantity(inventory.quantity);
+    } catch (error) {
+      console.log(error);
+    }
+
+    getWarehouse();
+  };
+
+  const getWarehouse = async () => {
+    try {
+      const requestUrl = `http://localhost:8080/warehouses/${inventory.warehouse_id}`;
+
+      const result = await axios.get(requestUrl);
+      console.log(result.data.warehouse_name);
+      setWarehouse(result.data.warehouse_name);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getWarehousesList = async () => {
+    try {
+      const requestUrl = `http://localhost:8080/warehouses`;
+      const result = await axios.get(requestUrl);
+      console.log(result.data);
+      setWarehouseList(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editInventory = async (inventoryData) => {
+    try {
+      const requestUrl = `http://localhost:8080/inventories/${inventoriesId}`;
+      const result = await axios.put(requestUrl, inventoryData);
+      console.log(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function inventoryEditSubmit(e) {
+    e.preventDefault();
+
+    const inventoryData = {
+      warehouse_id: warehouse_id,
+      item_name: item_name,
+      description: description,
+      category: category,
+      status: status,
+      quantity: inventory.quantity,
+    };
+
+    if (validateInputs()) {
+      // Proceed with form submission
+      console.log(inventoryData);
+      editInventory(inventoryData);
+      console.log("Form submitted successfully");
+    }
+
+    //Navigate back to the inventory details page
+    navigate("/"); //pick the right navigation path
+  }
+
+  function statusHandle(value) {
+    setStatus(value);
+    if (status === "In Stock") {
+    } else {
+    }
+  }
+
+  useEffect(() => {
+    getInventory();
+
+    getWarehousesList();
+  }, [inventory]); //dependency list
+
+  if (!inventory || !warehouse || !warehousesList) {
+    return <div>Loading page...</div>;
+  }
+
+  return (
+    <div className="edit-inventory">
+      <div className="edit-inventory__header">
+        <Link to="/inventories/:id">
+          <img src={backIcon}></img>
+        </Link>
+        <h1>Edit Inventory Item</h1>
+      </div>
+      <form className="edit-inventory__form" onSubmit={inventoryEditSubmit}>
+        <fieldset>
+          <legend>Item Details</legend>
+          <div className="edit-inventory__card">
+            <label>Item Name</label>
+            <input
+              type="text"
+              defaultValue={item_name}
+              onChange={(e) => setItem_name(e.target.value)}
+              placeholder={inventory.item_name}
+            ></input>
+          </div>
+          <div className="edit-inventory__card">
+            <label>Description</label>
+            <textarea
+              type="text"
+              defaultValue={inventory.description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="edit-inventory__card">
+            <label>Category</label>
+            <select
+              defaultValue={inventory.category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {categoryList.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Item Availability</legend>
+          <div className="edit-inventory__card">
+            <p>Status</p>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="InStockStatus"
+                  value="In Stock"
+                  checked={status === "In Stock"}
+                  onChange={(e) => statusHandle(e.target.value)}
+                ></input>
+                In stock
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="OutOfStockStatus"
+                  value="Out of Stock"
+                  checked={status === "Out of Stock"}
+                  onChange={(e) => statusHandle(e.target.value)}
+                ></input>
+                Out of stock
+              </label>
+            </div>
+          </div>
+          {status === "In Stock" && (
+            <div className="edit-inventory__card">
+              <label>Quantity</label>
+              <input
+                type="number"
+                defaultValue={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+                placeholder={inventory.quantity}
+              ></input>
+            </div>
+          )}
+          <div className="edit-inventory__card">
+            <label>Warehouse</label>
+            <select
+              defaultValue={warehouse}
+              onChange={(e) => setWarehouse_id(e.target.value)}
+            >
+              {warehousesList.map((warehouse) => (
+                <option key={warehouse.id} value={warehouse.id}>
+                  {warehouse.warehouse_name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <button>Cancel</button>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  );
+}
+
+export default EditInventory;

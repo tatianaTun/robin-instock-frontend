@@ -1,0 +1,76 @@
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-inventory {
+  border: 1px solid gray;
+  position:absolute;
+  top:150px;
+  width: calc(100% - 40px); /* 100% width minus 20px left and right margins */
+  margin:0 20px;
+  background-color:white;
+  border-radius:5px;
+
+  &__header {
+    display: flex;
+    border-bottom: 1px solid $cloud;
+    padding: 20px;
+    position:relative;
+    align-items: center;
+    justify-content: center;
+    & Link { 
+      display: block;
+      position:absolute;
+      // margin-left:20px;
+      & img {
+        // position:absolute;
+        // padding-right: 20px;
+        // padding-top: 20px;
+      }
+    }
+    & h1 {
+      // margin: 0;
+      // flex-grow: 1; /* Allow the h1 element to grow and fill the remaining space */
+    }
+  }
+
+  &__form {
+    padding: 20px;
+
+    & fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      & legend {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+    & label {
+      display: block;
+      font-weight: bold;
+    }
+
+    & textarea,
+    & input,
+    & select {
+      border: 1px solid $cloud;
+      border-radius: 20px;
+      padding: 0.5em 1rem;
+
+      &::placeholder {
+        color: $cloud;
+      }
+
+    }
+    & textarea {
+height:100px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+}
