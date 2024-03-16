@@ -6,14 +6,14 @@ import './InventoryTable.scss';
 import { Link } from 'react-router-dom';
 import InventoryStatus from '../InventoryStatus/InventoryStatus';
 
-function TableRow({ inventory }) {
+function TableRow({ inventory, hasWarehouseName }) {
     return (
         <tr className="inventory-table__row">
             <td><Link to={`/inventories/${inventory.id}`} className="inventory-table__cell link">{inventory.item_name} <img src={forwardIcon} alt="" /></Link></td>
             <td><p className="inventory-table__cell">{inventory.category}</p></td>
             <td><p className="inventory-table__cell"><InventoryStatus status={inventory.status} /></p></td>
             <td><p className="inventory-table__cell">{inventory.quantity}</p></td>
-            <td><p className="inventory-table__cell">{inventory.warehouse_name}</p></td>
+            {hasWarehouseName && <td><p className="inventory-table__cell">{inventory.warehouse_name}</p></td>}
             <td><div className="inventory-table__cell actions">
                 <img src={deleteIcon} alt='Delete' />
                 <img src={editIcon} alt='Edit' />
@@ -23,6 +23,10 @@ function TableRow({ inventory }) {
 }
 
 function InventoryTable({ inventories }) {
+    let hasWarehouseName = false;
+    if (inventories.length > 0) {
+        hasWarehouseName = inventories[0].warehouse_name !== undefined;
+    }
 
     return (
         <table className="inventory-table">
@@ -32,12 +36,12 @@ function InventoryTable({ inventories }) {
                     <th><h4 className="inventory-table__head">CATEGORY <img src={sortIcon} alt='' /></h4></th>
                     <th><h4 className="inventory-table__head">STATUS <img src={sortIcon} alt='' /></h4></th>
                     <th><h4 className="inventory-table__head">QTY <img src={sortIcon} alt='' /></h4></th>
-                    <th><h4 className="inventory-table__head">WAREHOUSE <img src={sortIcon} alt='' /></h4></th>
+                    {hasWarehouseName && <th><h4 className="inventory-table__head">WAREHOUSE <img src={sortIcon} alt='' /></h4></th>}
                     <th><h4 className="inventory-table__head last">ACTIONS</h4></th>
                 </tr>
             </thead>
             <tbody>
-                {inventories.map(inventory => <TableRow key={inventory.id} inventory={inventory} />)}
+                {inventories.map(inventory => <TableRow key={inventory.id} inventory={inventory} hasWarehouseName={hasWarehouseName} />)}
             </tbody>
         </table>
     )
