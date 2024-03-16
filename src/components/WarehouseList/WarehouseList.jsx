@@ -5,7 +5,7 @@ import chevronright from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 
-function WarehouseList({ warehouseData }) {
+function WarehouseList({ warehouseData, handleDeleteClick }) {
   return (
     <main className="warehouselist">
       <section className="warehouselist__nav">
@@ -135,6 +135,7 @@ function WarehouseList({ warehouseData }) {
             <p className="warehouselist__subtitle--display">ACTIONS</p>
             <div className="warehouselist__images">
               <img
+                onClick={() => handleDeleteClick(warehouse)}
                 src={deleteIcon}
                 alt="delete icon"
                 className="warehouselist__img"

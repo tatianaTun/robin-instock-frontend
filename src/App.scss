@@ -8,10 +8,11 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  // background-color: $light-grey;
 }
+
 .App {
   text-align: center;
+  background-color: $light-grey;
 }
 
 .App-logo {
