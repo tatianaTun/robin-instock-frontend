@@ -18,13 +18,13 @@ function InventoryDetails({ inventoryItem, warehouseData, inventoriesId }) {
     <section className="inventorydetails">
       <div className="inventorydetails__nav">
         <div className="inventorydetails__group">
-          {/* <Link to="/inventories"> */}
-          <img
-            className="inventorydetails__arrow"
-            src={arrowback}
-            alt="arrowback to inventories page"
-          />
-          {/* </Link> */}
+          <Link to="/inventories">
+            <img
+              className="inventorydetails__arrow"
+              src={arrowback}
+              alt="arrowback to inventories page"
+            />
+          </Link>
           <h1 className="inventorydetails__title">{inventoryItem.item_name}</h1>
         </div>
 

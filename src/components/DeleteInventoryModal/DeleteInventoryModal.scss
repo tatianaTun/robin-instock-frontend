@@ -1,0 +1,152 @@
+@use "../../styles//partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventoryitem {
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  z-index: 1000;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  @include tablet {
+    width: 85%;
+    height: 40%;
+    padding-top: 40px;
+    top: 20%;
+    left: 8%;
+  }
+
+  @include desktop {
+    width: 80%;
+    height: 40%;
+    padding-top: 40px;
+    top: 20%;
+    left: 10%;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 15%;
+    right: 20px;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    color: $instock-black;
+    @include mobile-page-header-H1;
+
+    @include tablet {
+      padding-bottom: 16px;
+    }
+    @include desktop {
+      padding-bottom: 16px;
+    }
+  }
+
+  &__subtitle {
+    color: $slate;
+    font-weight: 400;
+    @include mobile-body-large-P1;
+  }
+  &__buttons {
+    margin-top: 30vh;
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+      margin-top: 10vh;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
+    @include desktop {
+      margin-top: 10vh;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  }
+
+  &__delete {
+    border-radius: 20px;
+    border: none;
+    width: 45%;
+    height: 36px;
+    color: $white;
+    font-weight: 700;
+    background-color: $red;
+    @include mobile-labels-link-and-buttons-H3;
+    @include tablet {
+      width: 12%;
+    }
+
+    @include desktop {
+      width: 12%;
+    }
+  }
+
+  &__cancel {
+    border-radius: 20px;
+    border-color: $cloud;
+    width: 45%;
+    height: 36px;
+    color: $slate;
+    font-weight: 700;
+    background-color: $white;
+    @include mobile-labels-link-and-buttons-H3;
+    @include tablet {
+      width: 12%;
+    }
+
+    @include desktop {
+      width: 12%;
+    }
+  }
+
+  &__delete:hover {
+    border-radius: 20px;
+    border: none;
+    width: 45%;
+    height: 36px;
+    color: $white;
+    font-weight: 700;
+    background-color: $graphite;
+    @include mobile-labels-link-and-buttons-H3;
+    @include tablet {
+      width: 12%;
+    }
+
+    @include desktop {
+      width: 12%;
+    }
+  }
+
+  &__cancel:hover {
+    border-radius: 20px;
+    border-color: $instock-indigo;
+    width: 45%;
+    height: 36px;
+    color: $slate;
+    font-weight: 700;
+    background-color: $white;
+    @include mobile-labels-link-and-buttons-H3;
+    @include tablet {
+      width: 12%;
+    }
+
+    @include desktop {
+      width: 12%;
+    }
+  }
+}
