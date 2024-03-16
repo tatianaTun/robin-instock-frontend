@@ -1,0 +1,58 @@
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: $graphite;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  // align-items: center;
+  height: 200px;
+
+  padding: 20px;
+
+  &__logo {
+    width: 129px;
+    height: auto;
+  }
+  &__navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  &__link {
+    display: block;
+    height: 3rem;
+    text-decoration: none;
+    color: $white;
+    padding: 10px 50px;
+    border-radius: 30px;
+  }
+  &__warehouses-link--active,
+  &__inventories-link--active {
+    background-color: $instock-black;
+  }
+}
+@include tablet {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 36px;
+
+    &__navbar {
+      display: flex;
+      padding: 0;
+    }
+    &__link {
+      padding: 10px 30px;
+    }
+  }
+}
+@include desktop {
+  .header {
+    padding-left: 63px;
+    padding-right: 63px;
+  }
+}
