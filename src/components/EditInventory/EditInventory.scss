@@ -3,74 +3,124 @@
 @use "../../styles/partials/variables" as *;
 
 .edit-inventory {
-  border: 1px solid gray;
-  position:absolute;
-  top:150px;
+  box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 0.5);
+  position: absolute;
+  top: 150px;
   width: calc(100% - 40px); /* 100% width minus 20px left and right margins */
-  margin:0 20px;
-  background-color:white;
-  border-radius:5px;
+  margin: 0 20px;
+  background-color: white;
+  border-radius: 5px;
 
   &__header {
     display: flex;
-    border-bottom: 1px solid $cloud;
+    border-bottom: 1.4px solid $cloud;
     padding: 20px;
-    position:relative;
+    position: relative;
     align-items: center;
-    justify-content: center;
-    & Link { 
+    & a {
       display: block;
-      position:absolute;
-      // margin-left:20px;
-      & img {
-        // position:absolute;
-        // padding-right: 20px;
-        // padding-top: 20px;
-      }
+      height: 24px;
     }
     & h1 {
-      // margin: 0;
-      // flex-grow: 1; /* Allow the h1 element to grow and fill the remaining space */
+      font-size: 1.7rem;
+      margin: 10px;
     }
   }
 
   &__form {
-    padding: 20px;
-
-    & fieldset {
-      border: none;
-      padding: 0;
-      margin: 0;
-      & legend {
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
+    & h2 {
+      padding: 20px 20px 0 20px;
     }
+
     & label {
       display: block;
       font-weight: bold;
+      padding-bottom: 5px;
     }
 
     & textarea,
     & input,
     & select {
-      border: 1px solid $cloud;
+      border: 1.4px solid $cloud;
       border-radius: 20px;
-      padding: 0.5em 1rem;
+      padding: 0.7em 1rem;
 
       &::placeholder {
         color: $cloud;
       }
-
     }
     & textarea {
-height:100px;
+      height: 120px;
     }
+  }
+
+  &__radio-container {
+    display:flex;
+  }
+
+  &__radio {
+    display:flex;
+    width:50%;
+    height:1.6rem;
+    align-items: center;
+
+    & span {
+      height:1.6rem;
+    }
+  }
+
+  &__status-header {
+    font-size: 1rem;
+    padding-bottom: 5px;
+  }
+
+  &__radio-label {
+    font-weight:400;
+    padding-left:10px;
+  }
+
+  &__item-details {
+    border-bottom: 1.4px solid $cloud;
+  }
+
+  &__cards-container {
+    padding: 0 20px;
   }
 
   &__card {
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    margin: 20px 0;
+  }
+
+  &__buttons {
+    padding:20px;
+    background-color:$light-grey;
+    display:flex;
+    justify-content: space-between;
+  }
+
+  &__cancel-button{
+    background-color: $white;
+    color: $instock-black;
+    padding: 10px 20px;
+    border: 1px solid  $cloud;
+    border-radius: 1.5rem;
+    width: 140px;
+    height: 38px;
+    cursor: pointer;
+    @include tabletanddesktop-labels-link-and-buttons-H3;
+  }
+
+  &__submit-button{
+    background-color: $instock-indigo;
+    color: $white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 1.5rem;
+    width: 140px;
+    height: 38px;
+    cursor: pointer;
+    @include tabletanddesktop-labels-link-and-buttons-H3;
   }
 }

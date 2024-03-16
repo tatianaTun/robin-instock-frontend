@@ -1,15 +1,13 @@
 import EditInventory from "../../components/EditInventory/EditInventory";
+import "./EditInventoryPage.scss";
 
 function EditInventoryPage() {
-
   return (
-    <div className="">
-      <EditInventory
-        // inventory={inventory}
-        // warehouseName={warehouse.warehouse_name}
-        // warehouseList={warehousesList}
-      />
+    <>
+    <div className="home">
+      <EditInventory />
     </div>
+    </>
   );
 }
 
