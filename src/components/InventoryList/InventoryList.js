@@ -12,7 +12,7 @@ function InventoryList() {
     useEffect(() => {
         const getInventories = async () => {
             try {
-                const res = await axios.get(`${baseURL}/api/inventories`);
+                const res = await axios.get(`${baseURL}/inventories`);
                 setInventories(res.data);
                 console.log(res.data);
             } catch (error) {
