@@ -6,7 +6,9 @@ import "./InventoryCard.scss";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
 function InventoryCard({ inventory, handleDeleteButtonClick, warehouseData }) {
-  console.log(warehouseData);
+ if (!warehouseData){
+  return <div>Loading...</div>
+ } console.log(warehouseData);
   // console.log(inventory);
 
   // const warehouseName = warehouseData.find((warehouse) => {
