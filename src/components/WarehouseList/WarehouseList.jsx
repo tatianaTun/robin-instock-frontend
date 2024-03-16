@@ -71,7 +71,7 @@ function WarehouseList({ warehouseData, handleDeleteClick }) {
                 </div>
 
                 {/* <Link
-            to={`/warehouse/${warehouse.id}`}*/}
+            to={`/warehouses/${warehouses.id}`}*/}
                 <div className="warehouselist__name">
                   <p className="warehouselist__body--hover">
                     {warehouse.warehouse_name}
