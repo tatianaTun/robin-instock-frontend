@@ -1,15 +1,23 @@
 @use "./variables" as *;
 
+
 @mixin tablet {
-  @media (min-width: $tablet-breakpoint) and (max-width: calc($desktop-breakpoint - 1px)) {
-    @content;
-  }
+    @media(min-width : $tablet-breakpoint) {
+        @content;
+    }
 }
+
 @mixin desktop {
-  @media (min-width: $desktop-breakpoint) {
-    @content;
-  }
+    @media(min-width : $desktop-breakpoint) {
+        @content;
+    }
 }
+//@mixin tablet {
+ // @media (min-width: $tablet-breakpoint) and (max-width: calc($desktop-breakpoint - 1px)) {
+  //  @content;
+ // }
+//}
+
 
 @mixin mobile-margin-left-right {
   margin-left: 16px;
