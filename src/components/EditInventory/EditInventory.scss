@@ -55,17 +55,17 @@
   }
 
   &__radio-container {
-    display:flex;
+    display: flex;
   }
 
   &__radio {
-    display:flex;
-    width:50%;
-    height:1.6rem;
+    display: flex;
+    width: 50%;
+    height: 1.6rem;
     align-items: center;
 
     & span {
-      height:1.6rem;
+      height: 1.6rem;
     }
   }
 
@@ -75,8 +75,8 @@
   }
 
   &__radio-label {
-    font-weight:400;
-    padding-left:10px;
+    font-weight: 400;
+    padding-left: 10px;
   }
 
   &__item-details {
@@ -94,25 +94,24 @@
   }
 
   &__buttons {
-    padding:20px;
-    background-color:$light-grey;
-    display:flex;
+    padding: 20px;
+    background-color: $light-grey;
+    display: flex;
     justify-content: space-between;
   }
 
-  &__cancel-button{
+  &__cancel-button {
     background-color: $white;
     color: $instock-black;
     padding: 10px 20px;
-    border: 1px solid  $cloud;
+    border: 1px solid $cloud;
     border-radius: 1.5rem;
     width: 140px;
     height: 38px;
     cursor: pointer;
-    @include tabletanddesktop-labels-link-and-buttons-H3;
   }
 
-  &__submit-button{
+  &__submit-button {
     background-color: $instock-indigo;
     color: $white;
     padding: 10px 20px;
@@ -121,6 +120,52 @@
     width: 140px;
     height: 38px;
     cursor: pointer;
-    @include tabletanddesktop-labels-link-and-buttons-H3;
   }
+}
+
+@include tablet {
+  .edit-inventory {
+    top: 110px;
+
+    &__inputs-container {
+      display: flex;
+    }
+
+    &__item-details {
+      border-right: 1px solid $cloud;
+      border-bottom: none;
+      width: 50%;
+    }
+
+    &__item-availability {
+      width: 50%;
+    }
+
+    &__radio-container {
+      justify-content: left;
+    }
+
+    &__radio {
+      width:auto;
+      margin-right:30px;
+    }
+
+    &__cancel-button {
+      margin-right: 20px;
+      padding: 8px, 16px, 8px, 16px;
+      width: auto;
+    }
+
+    &__submit-button {
+      padding: 8px, 16px, 8px, 16px;
+      width: auto;
+    }
+
+    &__buttons {
+      justify-content: right;
+    }
+  }
+}
+
+@include desktop {
 }

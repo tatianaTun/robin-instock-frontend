@@ -159,100 +159,106 @@ function EditInventory() {
         <h1>Edit Inventory Item</h1>
       </div>
       <form className="edit-inventory__form" onSubmit={inventoryEditSubmit}>
-        <div className="edit-inventory__item-details">
-          <h2>Item Details</h2>
-          <div className="edit-inventory__cards-container">
-            <div className="edit-inventory__card">
-              <label>Item Name</label>
-              <input
-                type="text"
-                defaultValue={item_name}
-                onChange={(e) => setItem_name(e.target.value)}
-                placeholder={inventory.item_name}
-              ></input>
-            </div>
-            <div className="edit-inventory__card">
-              <label>Description</label>
-              <textarea
-                type="text"
-                defaultValue={inventory.description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></textarea>
-            </div>
-            <div className="edit-inventory__card">
-              <label>Category</label>
-              <select
-                defaultValue={inventory.category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {categoryList.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="edit-inventory__item-availability">
-          <h2>Item Availability</h2>
-          <div className="edit-inventory__cards-container">
-            <div className="edit-inventory__card">
-              <h3 className="edit-inventory__status-header">Status</h3>
-              <div className="edit-inventory__radio-container">
-                <div className="edit-inventory__radio edit-inventory__in-stock">
-                  <input
-                    type="radio"
-                    name="InStockStatus"
-                    value="In Stock"
-                    checked={status === "In Stock"}
-                    onChange={(e) => statusHandle(e.target.value)}
-                  ></input>
-                  <span className="edit-inventory__radio-label">In stock</span>
-                </div>
-                <div className="edit-inventory__radio edit-inventory__out-stock">
-                  <input
-                    type="radio"
-                    name="OutOfStockStatus"
-                    value="Out of Stock"
-                    checked={status === "Out of Stock"}
-                    onChange={(e) => statusHandle(e.target.value)}
-                  ></input>
-                  <span className="edit-inventory__radio-label">
-                    Out of stock
-                  </span>
-                </div>
-              </div>
-            </div>
-            {status === "In Stock" && (
+        <div className="edit-inventory__inputs-container">
+          <div className="edit-inventory__item-details">
+            <h2 className="edit-inventory__details-header">Item Details</h2>
+            <div className="edit-inventory__cards-container">
               <div className="edit-inventory__card">
-                <label>Quantity</label>
+                <label>Item Name</label>
                 <input
-                  type="number"
-                  defaultValue={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  placeholder={inventory.quantity}
+                  type="text"
+                  defaultValue={item_name}
+                  onChange={(e) => setItem_name(e.target.value)}
+                  placeholder={inventory.item_name}
                 ></input>
               </div>
-            )}
-            <div className="edit-inventory__card">
-              <label>Warehouse</label>
-              <select
-                defaultValue={warehouse}
-                onChange={(e) => setWarehouse_id(e.target.value)}
-              >
-                {warehousesList.map((warehouse) => (
-                  <option key={warehouse.id} value={warehouse.id}>
-                    {warehouse.warehouse_name}
-                  </option>
-                ))}
-              </select>
+              <div className="edit-inventory__card">
+                <label>Description</label>
+                <textarea
+                  type="text"
+                  defaultValue={inventory.description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
+              </div>
+              <div className="edit-inventory__card">
+                <label>Category</label>
+                <select
+                  defaultValue={inventory.category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  {categoryList.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="edit-inventory__item-availability">
+            <h2>Item Availability</h2>
+            <div className="edit-inventory__cards-container">
+              <div className="edit-inventory__card">
+                <h3 className="edit-inventory__status-header">Status</h3>
+                <div className="edit-inventory__radio-container">
+                  <div className="edit-inventory__radio edit-inventory__in-stock">
+                    <input
+                      type="radio"
+                      name="InStockStatus"
+                      value="In Stock"
+                      checked={status === "In Stock"}
+                      onChange={(e) => statusHandle(e.target.value)}
+                    ></input>
+                    <span className="edit-inventory__radio-label">
+                      In stock
+                    </span>
+                  </div>
+                  <div className="edit-inventory__radio edit-inventory__out-stock">
+                    <input
+                      type="radio"
+                      name="OutOfStockStatus"
+                      value="Out of Stock"
+                      checked={status === "Out of Stock"}
+                      onChange={(e) => statusHandle(e.target.value)}
+                    ></input>
+                    <span className="edit-inventory__radio-label">
+                      Out of stock
+                    </span>
+                  </div>
+                </div>
+              </div>
+              {status === "In Stock" && (
+                <div className="edit-inventory__card">
+                  <label>Quantity</label>
+                  <input
+                    type="number"
+                    defaultValue={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    placeholder={inventory.quantity}
+                  ></input>
+                </div>
+              )}
+              <div className="edit-inventory__card">
+                <label>Warehouse</label>
+                <select
+                  defaultValue={warehouse}
+                  onChange={(e) => setWarehouse_id(e.target.value)}
+                >
+                  {warehousesList.map((warehouse) => (
+                    <option key={warehouse.id} value={warehouse.id}>
+                      {warehouse.warehouse_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         </div>
         <div className="edit-inventory__buttons">
-        <button className="edit-inventory__cancel-button">Cancel</button>
-        <button type="submit" className="edit-inventory__submit-button">Save</button>
+          <button className="edit-inventory__cancel-button">Cancel</button>
+          <button type="submit" className="edit-inventory__submit-button">
+            Save
+          </button>
         </div>
       </form>
     </div>
