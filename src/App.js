@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header/Header";
+import EditInventoryPage  from "./pages/EditInventoryPage/EditInventoryPage";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import InventoriesPage from "./pages/InventoriesPage/InventoriesPage";
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         {/* <Route path="/" element={<InventoryPage />} /> */}
         <Route path="/inventories" element={<InventoriesPage />} />
@@ -36,6 +38,8 @@ function App() {
           path="/inventories/:inventoriesId"
           element={<InventoryPage warehouseData={warehouseData} />}
         />
+        <Route path="/inventories/:inventoriesId/edit" element={<EditInventoryPage />} />
+
       </Routes>
     </BrowserRouter>
   );

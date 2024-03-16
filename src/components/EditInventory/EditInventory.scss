@@ -1,0 +1,171 @@
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-inventory {
+  box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 0.5);
+  position: absolute;
+  top: 150px;
+  width: calc(100% - 40px); /* 100% width minus 20px left and right margins */
+  margin: 0 20px;
+  background-color: white;
+  border-radius: 5px;
+
+  &__header {
+    display: flex;
+    border-bottom: 1.4px solid $cloud;
+    padding: 20px;
+    position: relative;
+    align-items: center;
+    & a {
+      display: block;
+      height: 24px;
+    }
+    & h1 {
+      font-size: 1.7rem;
+      margin: 10px;
+    }
+  }
+
+  &__form {
+    & h2 {
+      padding: 20px 20px 0 20px;
+    }
+
+    & label {
+      display: block;
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+
+    & textarea,
+    & input,
+    & select {
+      border: 1.4px solid $cloud;
+      border-radius: 20px;
+      padding: 0.7em 1rem;
+
+      &::placeholder {
+        color: $cloud;
+      }
+    }
+    & textarea {
+      height: 120px;
+    }
+  }
+
+  &__radio-container {
+    display: flex;
+  }
+
+  &__radio {
+    display: flex;
+    width: 50%;
+    height: 1.6rem;
+    align-items: center;
+
+    & span {
+      height: 1.6rem;
+    }
+  }
+
+  &__status-header {
+    font-size: 1rem;
+    padding-bottom: 5px;
+  }
+
+  &__radio-label {
+    font-weight: 400;
+    padding-left: 10px;
+  }
+
+  &__item-details {
+    border-bottom: 1.4px solid $cloud;
+  }
+
+  &__cards-container {
+    padding: 0 20px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  &__buttons {
+    padding: 20px;
+    background-color: $light-grey;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cancel-button {
+    background-color: $white;
+    color: $instock-black;
+    padding: 10px 20px;
+    border: 1px solid $cloud;
+    border-radius: 1.5rem;
+    width: 140px;
+    height: 38px;
+    cursor: pointer;
+  }
+
+  &__submit-button {
+    background-color: $instock-indigo;
+    color: $white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 1.5rem;
+    width: 140px;
+    height: 38px;
+    cursor: pointer;
+  }
+}
+
+@include tablet {
+  .edit-inventory {
+    top: 110px;
+
+    &__inputs-container {
+      display: flex;
+    }
+
+    &__item-details {
+      border-right: 1px solid $cloud;
+      border-bottom: none;
+      width: 50%;
+    }
+
+    &__item-availability {
+      width: 50%;
+    }
+
+    &__radio-container {
+      justify-content: left;
+    }
+
+    &__radio {
+      width:auto;
+      margin-right:30px;
+    }
+
+    &__cancel-button {
+      margin-right: 20px;
+      padding: 8px, 16px, 8px, 16px;
+      width: auto;
+    }
+
+    &__submit-button {
+      padding: 8px, 16px, 8px, 16px;
+      width: auto;
+    }
+
+    &__buttons {
+      justify-content: right;
+    }
+  }
+}
+
+@include desktop {
+}
