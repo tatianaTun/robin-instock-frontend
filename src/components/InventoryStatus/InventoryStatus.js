@@ -4,9 +4,9 @@ function InventoryStatus({ status }) {
     const available = status === 'In Stock';
 
     if (available) {
-        return <p className="inventory-status positive small">IN STOCK</p>
+        return <span className="inventory-status positive small">IN STOCK</span>
     } else {
-        return <p className="inventory-status negative small">OUT OF STOCK</p>
+        return <span className="inventory-status negative small">OUT OF STOCK</span>
     }
 }
 

@@ -28,10 +28,10 @@ function InventoryCard({ inventory }) {
                         <h3 className="inventory-card__label">QTY</h3>
                         <p className="inventory-card__value">{inventory.quantity}</p>
                     </div>
-                    <div className='inventory-card__field'>
+                    {inventory.warehouse_name && <div className='inventory-card__field'>
                         <h3 className="inventory-card__label">WAREHOUSE</h3>
                         <p className="inventory-card__value">{inventory.warehouse_name}</p>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className='inventory-card__actions'>
