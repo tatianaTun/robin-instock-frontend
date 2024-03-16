@@ -7,6 +7,8 @@ import InventoriesPage from "./pages/InventoriesPage/InventoriesPage";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "./consts.js";
+import Footer from "./components/Footer/Footer";
+import WarehousePage from "./pages/WarehousePage/WarehousePage";
 
 import "./App.scss";
 
@@ -32,15 +34,17 @@ function App() {
         {/* <Route path="/" element={<InventoryPage />} /> */}
         <Route path="/inventories" element={<InventoriesPage />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
-        {/* <Route path="/warehouses/:warehouseId" element={<WarehousePage />} />
-        <Route path="/inventories" element={<InventoriesPage />} /> */}
+        
+        <Route path="/warehouses/:warehouseId" element={<WarehousePage />} /> 
+        {/*<Route path="/" element={<WarehousePage />} /> */}
         <Route
           path="/inventories/:inventoriesId"
           element={<InventoryPage warehouseData={warehouseData} />}
         />
         <Route path="/inventories/:inventoriesId/edit" element={<EditInventoryPage />} />
-
+    
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

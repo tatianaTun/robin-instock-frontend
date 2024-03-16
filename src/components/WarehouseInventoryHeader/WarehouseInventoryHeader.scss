@@ -1,0 +1,50 @@
+@import '../../styles/partials/colors';
+@import '../../styles/partials/mixins';
+
+.wi-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+
+    &__nav {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+    }
+
+    &__button {
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        //&--icon {}
+
+        &--label {
+            color: $primary-color;
+            display: none;
+        }
+    }
+}
+
+@include tablet {
+    .wi-header {
+        &__button {
+            border-radius: 20px;
+            height: 38px;
+            width: unset;
+            padding: 0 16px;
+
+            &--label {
+                display: inline-block;
+            }
+        }
+    }
+}
