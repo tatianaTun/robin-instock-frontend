@@ -1,6 +1,11 @@
+import InventoryList from "../../components/InventoryList/InventoryList";
+import './InventoriesPage.scss';
+
 function InventoriesPage() {
-    return(
-        <></>
+    return (
+        <main className="inventory-page">
+            <InventoryList />
+        </main>
     )
 }
 

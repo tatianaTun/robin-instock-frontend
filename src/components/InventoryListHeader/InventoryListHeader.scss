@@ -1,0 +1,25 @@
+@import '../../styles/partials/mixins';
+
+.in-header {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@include tablet {
+    .in-header {
+        flex-direction: row;
+        justify-content: space-between;
+
+        &__actions {
+            flex-direction: row;
+        }
+    }
+}
