@@ -5,7 +5,21 @@ import { Link } from "react-router-dom";
 import "./InventoryCard.scss";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
-function InventoryCard({ inventory, handleDeleteButtonClick }) {
+function InventoryCard({ inventory, handleDeleteButtonClick, warehouseData }) {
+  console.log(warehouseData);
+  // console.log(inventory);
+
+  // const warehouseName = warehouseData.find((warehouse) => {
+  //   return warehouse.id === inventory.warehouse_id;
+  // }).warehouse_name;
+
+  const warehouse = warehouseData.find(
+    (warehouse) => warehouse.id === inventory.warehouse_id
+  );
+  const warehouseName = warehouse
+    ? warehouse.warehouse_name
+    : "Can not find Warehouse";
+
   return (
     <div className="inventory-card">
       <div className="inventory-card__content">
@@ -34,7 +48,7 @@ function InventoryCard({ inventory, handleDeleteButtonClick }) {
           </div>
           <div className="inventory-card__field">
             <h3 className="inventory-card__label">WAREHOUSE</h3>
-            <p className="inventory-card__value">{inventory.warehouse_name}</p>
+            <p className="inventory-card__value">{warehouseName}</p>
           </div>
         </div>
       </div>

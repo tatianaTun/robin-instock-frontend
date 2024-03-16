@@ -11,6 +11,7 @@ function InventoryList() {
   const [inventories, setInventories] = useState([]);
   const [selectedInventory, setSelectedInventory] = useState(null);
   const [showDeleteInventory, setShowDeleteInventory] = useState(false);
+  const [warehouseData, setwarehouseData] = useState([]);
 
   useEffect(() => {
     const getInventories = async () => {
@@ -22,12 +23,19 @@ function InventoryList() {
         console.error(error);
       }
     };
+    const getWarehouseList = async () => {
+      try {
+        const result = await axios.get(`${baseURL}/warehouses`);
+        setwarehouseData(result.data);
+      } catch (error) {}
+    };
+
+    getWarehouseList();
 
     getInventories();
   }, []);
 
   //delete Inventory item ticket J24XW-12
-
   const handleDeleteButtonClick = (inventory) => {
     setSelectedInventory(inventory);
     setShowDeleteInventory(true);
@@ -57,6 +65,7 @@ function InventoryList() {
             key={inventory.id}
             inventory={inventory}
             handleDeleteButtonClick={handleDeleteButtonClick}
+            warehouseData={warehouseData}
           />
         ))}
       </div>
