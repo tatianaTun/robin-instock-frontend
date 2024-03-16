@@ -6,8 +6,105 @@
         @content;
     }
 }
+
 @mixin desktop {
-    @media (min-width: $desktop-breakpoint) {
+    @media(min-width : $desktop-breakpoint) {
         @content;
     }
+}
+//@mixin tablet {
+ // @media (min-width: $tablet-breakpoint) and (max-width: calc($desktop-breakpoint - 1px)) {
+  //  @content;
+ // }
+//}
+
+
+@mixin mobile-margin-left-right {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+@mixin tablet-margin-left-right {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+@mixin desktop-margin {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin desktop-margin-left-right {
+  margin-left: 93px;
+  margin-right: 93px;
+}
+
+@mixin mobile-page-header-H1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+@mixin mobile-table-header-H4 {
+  font-size: 0.688rem;
+  line-height: 1rem;
+}
+
+@mixin mobile-subheader-H2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@mixin mobile-body-large-P1 {
+  font-size: 0.938rem;
+  line-height: 1.625rem;
+}
+
+@mixin mobile-body-medium-P2 {
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+}
+
+@mixin mobile-body-small-P3 {
+  font-size: 0.688rem;
+  line-height: 1rem;
+}
+
+@mixin mobile-labels-link-and-buttons-H3 {
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+}
+
+@mixin tabletanddesktop-page-header-H1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+@mixin tabletanddesktop-table-header-H4 {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+@mixin tabletanddesktop-subheader-H2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin tabletanddesktop-body-large-P1 {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+@mixin tabletanddesktop-body-medium-P2 {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+@mixin tabletanddesktop-body-small-P3 {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+@mixin tabletanddesktop-labels-link-and-buttons-H3 {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
 }

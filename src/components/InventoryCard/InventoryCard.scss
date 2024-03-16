@@ -1,0 +1,47 @@
+@import '../../styles/partials/colors';
+
+.inventory-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-top: 1px solid $border-color;
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+
+        &>div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__label {
+        color: $secondary-text-color
+    }
+
+    &__value {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        height: 16px;
+    }
+
+    a.inventory-card__value {
+        color: $primary-color;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+    }
+}

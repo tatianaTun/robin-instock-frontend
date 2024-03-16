@@ -1,7 +1,8 @@
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/fonts" as *;
 @use "./styles/partials/mixins" as *;
-
+@import './styles/partials/globals';
+@import './styles/partials/topographies';
 
 *,
 *::before,
@@ -9,7 +10,6 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
- 
 }
 .App {
   text-align: center;
