@@ -30,7 +30,7 @@ function InventoryCard({
         <div>
           <div className="inventory-card__field">
             <h3 className="inventory-card__label">INVENTORY ITEM</h3>
-            <Link to="/" className="inventory-card__value">
+            <Link to={`/inventories/${inventory.id}`} className="inventory-card__value">
               {inventory.item_name} <img src={forwardIcon} alt="" />
             </Link>
           </div>

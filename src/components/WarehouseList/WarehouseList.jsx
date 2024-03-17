@@ -70,7 +70,7 @@ function WarehouseList({ warehouseData, handleDeleteClick, warehouseId }) {
                     className="warehouselist__sort"
                   />
                 </div>
-                <Link to={`/warehouses/${warehouseId}`}>
+                <Link to={`/warehouses/${warehouse.id}`}>
                   <div className="warehouselist__name">
                     <p className="warehouselist__body--hover">
                       {warehouse.warehouse_name}
