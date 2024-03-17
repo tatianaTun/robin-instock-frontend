@@ -4,10 +4,12 @@ import InventoryCard from "../InventoryCard/InventoryCard";
 import InventoryTable from "../InventoryTable/InventoryTable";
 import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { baseURL } from "../../consts";
 import axios from "axios";
 
-function InventoryList() {
+function InventoryList({ inventoriesId }) {
+
   const [inventories, setInventories] = useState([]);
   const [selectedInventory, setSelectedInventory] = useState(null);
   const [showDeleteInventory, setShowDeleteInventory] = useState(false);
@@ -30,10 +32,48 @@ function InventoryList() {
       } catch (error) {}
     };
 
+    //   const getInventoryDetails = async () => {
+    //     try {
+    //       const result = await axios.get(
+    //         `${baseURL}/inventories/${inventoriesId}`
+    //       );
+    //       console.log(result);
+    //       setInventoryItem(result.data);
+    //       console.log(result.data);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   };
+
+    //   getInventoryDetails();
+    // } [inventoriesId]);
+
     getWarehouseList();
 
     getInventories();
   }, []);
+
+  // //fetch list of inventories data by id
+  // const { inventoriesId } = useParams();
+
+  // const [inventoryItem, setInventoryItem] = useState(null);
+  // useEffect(() => {
+  //   const getInventoryDetails = async () => {
+  //     try {
+  //       const result = await axios.get(
+  //         `${baseURL}/inventories/${inventoriesId}`
+  //       );
+  //       console.log(result);
+  //       console.log(inventoriesId);
+  //       setInventoryItem(result.data);
+  //       console.log(result.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   getInventoryDetails();
+  // }, [inventoriesId]);
 
   //delete Inventory item ticket J24XW-12
   const handleDeleteButtonClick = (inventory) => {
@@ -66,12 +106,15 @@ function InventoryList() {
             inventory={inventory}
             handleDeleteButtonClick={handleDeleteButtonClick}
             warehouseData={warehouseData}
+            inventoriesId={inventoriesId}
+            // inventoryItem={inventoryItem}
           />
         ))}
       </div>
       <InventoryTable
         inventories={inventories}
         handleDeleteButtonClick={handleDeleteButtonClick}
+        inventoriesId={inventoriesId}
       />
       <DeleteInventoryModal
         inventories={inventories}

@@ -6,7 +6,7 @@ import "./InventoryTable.scss";
 import { Link } from "react-router-dom";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
-function TableRow({ inventory, handleDeleteButtonClick }) {
+function TableRow({ inventory, handleDeleteButtonClick, inventoriesId }) {
   return (
     <tr className="inventory-table__row">
       <td>
@@ -38,14 +38,20 @@ function TableRow({ inventory, handleDeleteButtonClick }) {
             src={deleteIcon}
             alt="Delete"
           />
-          <img src={editIcon} alt="Edit" />
+          <Link to={`/inventories/${inventory.id}/edit`}>
+            <img src={editIcon} alt="Edit" />
+          </Link>
         </div>
       </td>
     </tr>
   );
 }
 
-function InventoryTable({ inventories, handleDeleteButtonClick }) {
+function InventoryTable({
+  inventories,
+  handleDeleteButtonClick,
+  inventoriesId,
+}) {
   return (
     <table className="inventory-table">
       <thead>
@@ -86,6 +92,7 @@ function InventoryTable({ inventories, handleDeleteButtonClick }) {
             key={inventory.id}
             inventory={inventory}
             handleDeleteButtonClick={handleDeleteButtonClick}
+            inventoriesId={inventoriesId}
           />
         ))}
       </tbody>
