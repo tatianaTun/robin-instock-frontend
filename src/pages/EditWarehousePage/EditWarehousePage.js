@@ -109,6 +109,9 @@ function EditWarehousePage() {
         return validator.isEmail(email)
     };
     const isPhoneNoValid = (number) => {
+        if(phone(number, { country: '' }).isValid === false){
+            setIsPhoneNumberValid(false);
+        }
         return phone(number, { country: '' }).isValid
     };
 
@@ -159,7 +162,7 @@ function EditWarehousePage() {
         }
 
 
-        return (true && isFilled() && handleChangeEmail && handleChangePhoneNo);
+        return (true && isFilled() && handleChangeEmail && handleChangePhoneNo && isPhoneNoValid(formFields.phoneNo.value));
     };
 
     const handleSubmit = (event) => {

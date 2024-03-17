@@ -139,7 +139,7 @@ function WarehouseList({ warehouseData, handleDeleteClick, warehouseId }) {
                 alt="delete icon"
                 className="warehouselist__img"
               />
-              <Link to={`/warehouses/${warehouseId}/edit`}>
+              <Link to={`/warehouses/${warehouse.id}/edit`}>
               <img
                 src={editIcon}
                 alt="edit icon"
