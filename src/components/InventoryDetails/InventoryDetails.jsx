@@ -28,26 +28,26 @@ function InventoryDetails({ inventoryItem, warehouseData, inventoriesId }) {
           <h1 className="inventorydetails__title">{inventoryItem.item_name}</h1>
         </div>
 
-        {/* <Link to={`/inventories/${inventoriesId}/edit`}> */}
-        <div className="inventorydetails__icon-background">
-          <img
-            className="inventorydetails__edit"
-            src={editModifiedIcon}
-            alt="edit icon"
-          />
-        </div>
-        {/* </Link> */}
+        <Link to={`/inventories/${inventoriesId}/edit`}>
+          <div className="inventorydetails__icon-background">
+            <img
+              className="inventorydetails__edit"
+              src={editModifiedIcon}
+              alt="edit icon"
+            />
+          </div>
+        </Link>
 
-        {/* <Link to={`/inventories/${inventoriesId}/edit`}> */}
-        <div className="inventorydetails__icon-background--modify">
-          <img
-            className="inventorydetails__edit--modify"
-            src={editModifiedIcon}
-            alt="edit icon"
-          />
-          Edit
-        </div>
-        {/* </Link> */}
+        <Link to={`/inventories/${inventoriesId}/edit`}>
+          <div className="inventorydetails__icon-background--modify">
+            <img
+              className="inventorydetails__edit--modify"
+              src={editModifiedIcon}
+              alt="edit icon"
+            />
+            Edit
+          </div>
+        </Link>
       </div>
 
       <div className="inventorydetails__content">

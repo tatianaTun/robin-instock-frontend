@@ -4,11 +4,26 @@ import DeleteWarehouseModal from "../../components/DeleteWarehouseModal/DeleteWa
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../../consts.js";
+import { useParams } from "react-router-dom";
 
 function WarehousePage() {
   const [warehouseData, setwarehouseData] = useState([]);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
   const [showDeletePage, setShowDeletePage] = useState(false);
+  //list of warehouse data by id const
+  const { warehouseId } = useParams();
+  console.log(warehouseId);
+  const [warehouse, setWarehouse] = useState({
+    id: 1,
+    warehouse_name: "Manhattan",
+    address: "503 Broadway",
+    city: "New York",
+    country: "USA",
+    contact_name: "Parmin Aujla",
+    contact_position: "Warehouse Manager",
+    contact_phone: "+1 (646) 123-1234",
+    contact_email: "paujla@instock.com",
+  });
 
   //fetch list of warehouse data
   useEffect(() => {
@@ -21,6 +36,21 @@ function WarehousePage() {
 
     getWarehouseList();
   }, []);
+
+  //fetch warehouse data by id
+  useEffect(() => {
+    const getWarehouse = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/warehouses/${warehouseId}`);
+        setWarehouse(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getWarehouse();
+  }, [warehouseId]);
 
   //delete warehouse
 
@@ -52,6 +82,7 @@ function WarehousePage() {
         <WarehouseList
           warehouseData={warehouseData}
           handleDeleteClick={handleDeleteClick}
+          warehouseId={warehouseId}
         />
         <DeleteWarehouseModal
           warehouseData={warehouseData}
