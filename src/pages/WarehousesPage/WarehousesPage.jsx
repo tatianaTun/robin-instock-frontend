@@ -37,18 +37,18 @@ function WarehousePage() {
   }, []);
 
   //fetch warehouse data by id
-  useEffect(() => {
-    const getWarehouse = async () => {
-      try {
-        const res = await axios.get(`${baseURL}/warehouses/${warehouseId}`);
-        setWarehouse(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  // useEffect(() => {
+  //   const getWarehouse = async () => {
+  //     try {
+  //       const res = await axios.get(`${baseURL}/warehouses/${warehouseId}`);
+  //       setWarehouse(res.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
 
-    getWarehouse();
-  }, [warehouseId]);
+  //   getWarehouse();
+  // }, [warehouseId]);
 
   //delete warehouse
 
