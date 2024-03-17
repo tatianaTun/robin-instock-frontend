@@ -12,7 +12,7 @@ function WarehousePage() {
   const [showDeletePage, setShowDeletePage] = useState(false);
   //list of warehouse data by id const
   const { warehouseId } = useParams();
-  console.log(warehouseId);
+
   const [warehouse, setWarehouse] = useState({
     id: 1,
     warehouse_name: "Manhattan",
@@ -38,19 +38,19 @@ function WarehousePage() {
   }, []);
 
   //fetch warehouse data by id
-  useEffect(() => {
-    const getWarehouse = async () => {
-      try {
-        const res = await axios.get(`${baseURL}/warehouses/${warehouseId}`);
-        setWarehouse(res.data);
-        console.log(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  // useEffect(() => {
+  //   const getWarehouse = async () => {
+  //     try {
+  //       const res = await axios.get(`${baseURL}/warehouses/${warehouseId}`);
 
-    getWarehouse();
-  }, [warehouseId]);
+  //       setWarehouse(res.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+
+  //   getWarehouse();
+  // }, [warehouseId]);
 
   //delete warehouse
 

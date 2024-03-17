@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
-// import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
+import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
 import "./WarehousePage.scss";
 import axios from "axios";
 import { baseURL } from "../../consts";
@@ -21,9 +21,9 @@ function WarehousePage() {
     contact_email: "paujla@instock.com",
   });
 
-  //   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
-  //   const [showDeletePage, setShowDeletePage] = useState(false);
-  //   const [warehouseData, setwarehouseData] = useState([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const [showDeletePage, setShowDeletePage] = useState(false);
+  const [warehouseData, setwarehouseData] = useState([]);
 
   useEffect(() => {
     const getWarehouse = async () => {
@@ -39,47 +39,47 @@ function WarehousePage() {
     getWarehouse();
   }, [warehouseId]);
 
-  //   useEffect(() => {
-  //     const getWarehouseList = async () => {
-  //       try {
-  //         const result = await axios.get(`${baseURL}/warehouses`);
-  //         setwarehouseData(result.data);
-  //       } catch (error) {}
-  //     };
+  useEffect(() => {
+    const getWarehouseList = async () => {
+      try {
+        const result = await axios.get(`${baseURL}/warehouses`);
+        setwarehouseData(result.data);
+      } catch (error) {}
+    };
 
-  //     getWarehouseList();
-  //   }, []);
+    getWarehouseList();
+  }, []);
 
-  //delete warehouse
+  //delete warehouse function
 
-  //   const handleDeleteClick = (warehouse) => {
-  //     setSelectedWarehouse(warehouse);
-  //     setShowDeletePage(true);
-  //   };
+  const handleDeleteClick = (warehouse) => {
+    setSelectedWarehouse(warehouse);
+    setShowDeletePage(true);
+  };
 
-  //   const handleCancel = () => {
-  //     setShowDeletePage(false);
-  //   };
+  const handleCancel = () => {
+    setShowDeletePage(false);
+  };
 
-  //   const handleDelete = async () => {
-  //     try {
-  //       await axios.delete(`${baseURL}/warehouses/${selectedWarehouse.id}`);
-  //       setwarehouseData(
-  //         warehouseData.filter(
-  //           (warehouse) => warehouse.id !== selectedWarehouse.id
-  //         )
-  //       );
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${baseURL}/warehouses/${selectedWarehouse.id}`);
+      setwarehouseData(
+        warehouseData.filter(
+          (warehouse) => warehouse.id !== selectedWarehouse.id
+        )
+      );
 
-  //       setShowDeletePage(false);
-  //     } catch (error) {}
-  //   };
+      setShowDeletePage(false);
+    } catch (error) {}
+  };
 
   return (
     <main className="warehouse-inventory-page">
       <WarehouseInventoryList
         warehouse={warehouse}
-        // warehouseData={warehouseData}
-        // handleDeleteClick={handleDeleteClick}
+        warehouseData={warehouseData}
+        handleDeleteClick={handleDeleteClick}
       />
       {/* <DeleteInventoryModal
         inventories={inventories}
