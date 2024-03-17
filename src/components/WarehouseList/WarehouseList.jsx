@@ -4,8 +4,9 @@ import sort from "../../assets/Icons/sort-24px.svg";
 import chevronright from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
+import { Link } from "react-router-dom";
 
-function WarehouseList({ warehouseData, handleDeleteClick }) {
+function WarehouseList({ warehouseData, handleDeleteClick, warehouseId }) {
   return (
     <main className="warehouselist">
       <section className="warehouselist__nav">
@@ -25,7 +26,7 @@ function WarehouseList({ warehouseData, handleDeleteClick }) {
             alt="search icon"
           />
         </div>
-        {/* <link to="/warehouse/add"> */}
+        {/* <link to=`/warehouse${warehouseId}/add`> */}
         <div className="warehouselist__section">
           <button type="submit" className="warehouselist__button">
             + Add New Warehouse
@@ -69,20 +70,18 @@ function WarehouseList({ warehouseData, handleDeleteClick }) {
                     className="warehouselist__sort"
                   />
                 </div>
-
-                {/* <Link
-            to={`/warehouses/${warehouses.id}`}*/}
-                <div className="warehouselist__name">
-                  <p className="warehouselist__body--hover">
-                    {warehouse.warehouse_name}
-                  </p>
-                  <img
-                    src={chevronright}
-                    alt="chevron right icon"
-                    className="warehouselist__arrow"
-                  />
-                </div>
-                {/* </Link> */}
+                <Link to={`/warehouses/${warehouseId}`}>
+                  <div className="warehouselist__name">
+                    <p className="warehouselist__body--hover">
+                      {warehouse.warehouse_name}
+                    </p>
+                    <img
+                      src={chevronright}
+                      alt="chevron right icon"
+                      className="warehouselist__arrow"
+                    />{" "}
+                  </div>
+                </Link>
               </div>
 
               <div className="warehouselist__group">
@@ -140,7 +139,7 @@ function WarehouseList({ warehouseData, handleDeleteClick }) {
                 alt="delete icon"
                 className="warehouselist__img"
               />
-              {/* <link to="/warehouse/edit"> */}
+              {/* <link to="/warehouse/${warehouseId}/edit"> */}
               <img
                 src={editIcon}
                 alt="edit icon"

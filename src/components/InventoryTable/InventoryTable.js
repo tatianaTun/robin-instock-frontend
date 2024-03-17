@@ -38,7 +38,7 @@ function TableRow({ inventory, handleDeleteButtonClick, inventoriesId }) {
             src={deleteIcon}
             alt="Delete"
           />
-          <Link to={`/inventories/${inventoriesId}/edit`}>
+          <Link to={`/inventories/${inventory.id}/edit`}>
             <img src={editIcon} alt="Edit" />
           </Link>
         </div>
