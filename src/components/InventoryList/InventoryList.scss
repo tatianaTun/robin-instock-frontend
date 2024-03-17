@@ -6,11 +6,15 @@
     margin: 0 16px;
     box-shadow: 0px 1px 2px 2px #00000015;
     border-radius: 4px;
+    position: relative;
+    bottom: 50px;
+    // left: 15px;
 }
 
 @include tablet {
     .inventory-list {
         margin: 0 24px;
+        bottom: 70px;
 
         &__cards {
             display: none;
@@ -22,5 +26,6 @@
     .inventory-list {
         margin: 0 auto;
         width: 80%;
+        bottom: 70px;
     }
 }

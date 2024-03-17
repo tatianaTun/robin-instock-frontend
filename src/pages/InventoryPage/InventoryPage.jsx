@@ -6,9 +6,7 @@ import "./InventoryPage.scss";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 
 function InventoryPage({ warehouseData }) {
-  console.log(warehouseData);
   const { inventoriesId } = useParams();
-  console.log(inventoriesId);
   const [inventoryItem, setInventoryItem] = useState(null);
 
   // const [inventoriesData, setInventoriesData] = useState([]);
@@ -20,9 +18,7 @@ function InventoryPage({ warehouseData }) {
         const result = await axios.get(
           `${baseURL}/inventories/${inventoriesId}`
         );
-        console.log(result);
         setInventoryItem(result.data);
-        console.log(result.data);
       } catch (error) {
         console.log(error);
       }
@@ -31,18 +27,7 @@ function InventoryPage({ warehouseData }) {
     getInventoryDetails();
   }, [inventoriesId]);
 
-  //fetch list of inventories data
-  // useEffect(() => {
-  //   const getInventoryList = async () => {
-  //     try {
-  //       const result = await axios.get(`${baseURL}/inventories`);
-  //       console.log(result);
-  //       setInventoriesData(result.data);
-  //     } catch (error) {}
-  //   };
 
-  //   getInventoryList();
-  // }, []);
 
   if (!inventoryItem || !warehouseData) {
     return <div>Loading...</div>;

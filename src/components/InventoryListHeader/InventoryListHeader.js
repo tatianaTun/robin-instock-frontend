@@ -8,7 +8,7 @@ function InventoryListHeader() {
             <h1 className="in-header__title">Inventory</h1>
             <div className="in-header__actions">
                 <SearchField />
-                <Link to='/inventories/new' className="cta-button primary">+ Add New Item</Link>
+                <Link to='/inventories/add' className="cta-button primary">+ Add New Item</Link>
             </div>
         </div>
     )

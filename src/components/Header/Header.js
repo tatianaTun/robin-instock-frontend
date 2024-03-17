@@ -30,7 +30,7 @@ const Header = () => {
         <Link
           to="/warehouses"
           className={
-            isActiveWarehouse
+            isActiveWarehouse || !isActiveInventory
               ? "header__link header__warehouses-link--active"
               : "header__link"
           }

@@ -1,0 +1,284 @@
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: 50%
+}
+.edit-warehouse {
+    box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 0.5);
+    position: absolute;
+    top: 150px;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    background-color: white;
+    border-radius: 5px;
+
+    &__header {
+        display: flex;
+        border-bottom: 1.4px solid $cloud;
+        padding: 20px;
+        position: relative;
+        align-items: center;
+
+        & a {
+            display: block;
+            height: 24px;
+        }
+
+        & h1 {
+            font-size: 1.7rem;
+            margin: 10px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        & h2 {
+            padding: 0 20px 20px 0;
+        }
+
+        & label {
+            display: flex;
+
+            width: 100%;
+            font-weight: bold;
+            padding-bottom: 16px;
+        }
+
+        & textarea,
+        & input,
+        & select {
+            border: 1.4px solid $cloud;
+            border-radius: 20px;
+            padding: 0.7em 1rem;
+            margin-top: 10px;
+
+
+            &::placeholder {
+                color: $cloud;
+            }
+        }
+
+        &--error {
+            border: 1.4px solid $red;
+
+
+        }
+
+        & textarea {
+            height: 120px;
+        }
+    }
+    &__inputs-styler {
+        padding-top: 24px;
+    }
+    &__inputs-container {
+        display: flex;
+        flex-direction: column;
+        padding-left: 24px;
+        padding-right: 24px;
+
+    }
+
+    &__radio-container {
+        display: flex;
+    }
+
+    &__radio {
+        display: flex;
+        width: 50%;
+        height: 1.6rem;
+        align-items: center;
+
+        & span {
+            height: 1.6rem;
+        }
+    }
+
+    &__status-header {
+        font-size: 1rem;
+        padding-bottom: 5px;
+    }
+
+    &__radio-label {
+        font-weight: 400;
+        padding-left: 10px;
+    }
+
+    &__item-details {
+        border-bottom: 1.4px solid $cloud;
+    }
+
+    &__cards-container {
+        padding: 0 20px;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+    }
+
+    &__buttons {
+        padding: 20px;
+        background-color: $light-grey;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__cancel-button {
+        background-color: $white;
+        color: $instock-black;
+        padding: 10px 20px;
+        border: 1px solid $cloud;
+        border-radius: 1.5rem;
+        width: 140px;
+        height: 38px;
+        cursor: pointer;
+     
+        text-align: top;
+        vertical-align: top;
+        line-height: 19px;
+       
+    }
+
+    &__submit-button {
+        background-color: $instock-indigo;
+        color: $white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 1.5rem;
+        width: 140px;
+        height: 38px;
+        cursor: pointer;
+    }
+}
+
+@include tablet {
+    .edit-warehouse {
+        top: 110px;
+
+        &__form {
+            margin: 24px 0 24px;
+
+        }
+
+        &__inputs-styler {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__inputs-container {
+            display: flex;
+            padding: 0, 20px;
+            width: 50%;
+            margin-bottom: 24px;
+
+            &--divider {
+                border-left: 1.5px solid $cloud;
+            }
+        }
+
+
+        &__item-details {
+            border-right: 1px solid $cloud;
+            border-bottom: none;
+            width: 50%;
+        }
+
+        &__item-availability {
+            width: 50%;
+        }
+
+        &__radio-container {
+            justify-content: left;
+        }
+
+        &__radio {
+            width: auto;
+            margin-right: 30px;
+        }
+
+        &__cancel-button {
+            margin-right: 20px;
+            padding: 8px, 16px, 8px, 16px;
+            width: auto;
+        }
+
+        &__submit-button {
+            padding: 8px, 16px, 8px, 16px;
+            width: auto;
+        }
+
+        &__buttons {
+            justify-content: right;
+        }
+    }
+}
+
+@include desktop {
+    .edit-warehouse {
+        top: 110px;
+
+        &__form {
+            margin: 24px 0 24px;
+
+        }
+
+        &__inputs-styler {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__inputs-container {
+            display: flex;
+            padding: 0, 20px;
+            width: 50%;
+            margin-bottom: 24px;
+
+            &--divider {
+                border-left: 1.5px solid $cloud;
+            }
+        }
+
+
+        &__item-details {
+            border-right: 1px solid $cloud;
+            border-bottom: none;
+            width: 50%;
+        }
+
+        &__item-availability {
+            width: 50%;
+        }
+
+        &__radio-container {
+            justify-content: left;
+        }
+
+        &__radio {
+            width: auto;
+            margin-right: 30px;
+        }
+
+        &__cancel-button {
+            margin-right: 20px;
+            padding: 8px, 16px, 8px, 16px;
+            width: auto;
+        }
+
+        &__submit-button {
+            padding: 8px, 16px, 8px, 16px;
+            width: auto;
+        }
+
+        &__buttons {
+            justify-content: right;
+        }
+    }
+}

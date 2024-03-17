@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import InventoryCard from "../InventoryCard/InventoryCard";
 import InventoryTable from "../InventoryTable/InventoryTable";
@@ -7,8 +6,13 @@ import axios from "axios";
 import { baseURL } from "../../consts";
 import WarehouseInventoryHeader from "../WarehouseInventoryHeader/WarehouseInventoryHeader";
 import WarehouseDetail from "../WarehouseDetail/WarehouseDetail";
-function WarehouseInventoryList({ warehouse }) {
+import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
+
+function WarehouseInventoryList({ warehouse, warehouseId }) {
   const [warehouseData, setwarehouseData] = useState([]);
+  const [showDeleteInventory, setShowDeleteInventory] = useState(false);
+  const [selectedInventory, setSelectedInventory] = useState(null);
+
   const [inventories, setInventories] = useState([
     {
       id: 68,
@@ -48,7 +52,6 @@ function WarehouseInventoryList({ warehouse }) {
           `${baseURL}/inventories?warehouse_id=${warehouse.id}`
         );
         setInventories(res.data);
-        console.log(res.data);
       } catch (error) {
         console.error(error);
       }
@@ -63,9 +66,32 @@ function WarehouseInventoryList({ warehouse }) {
     getInventories();
   }, [warehouse.id]);
 
+  const handleDeleteButtonClick = (inventory) => {
+    setSelectedInventory(inventory);
+    setShowDeleteInventory(true);
+  };
+
+  const handleCancelButton = () => {
+    setShowDeleteInventory(false);
+  };
+
+  const handleDeleteButton = async () => {
+    try {
+      await axios.delete(`${baseURL}/inventories/${selectedInventory.id}`);
+      setInventories(
+        inventories.filter((inventory) => inventory.id !== selectedInventory.id)
+      );
+
+      setShowDeleteInventory(false);
+    } catch (error) {}
+  };
+
   return (
     <div className="inventory-list">
-      <WarehouseInventoryHeader warehouseName={warehouse.warehouse_name} />
+      <WarehouseInventoryHeader
+        warehouseName={warehouse.warehouse_name}
+        warehouseId={warehouseId}
+      />
       <WarehouseDetail warehouse={warehouse} />
       <div className="inventory-list__cards">
         {inventories.map((inventory) => (
@@ -73,14 +99,26 @@ function WarehouseInventoryList({ warehouse }) {
             key={inventory.id}
             inventory={inventory}
             warehouseData={warehouseData}
-            inventoriesId={"0"}
+            inventoriesId={inventory.id}
+            handleDeleteButtonClick={handleDeleteButtonClick}
           />
         ))}
       </div>
-      <InventoryTable inventories={inventories} />
+
+      <DeleteInventoryModal
+        inventories={inventories}
+        displayPage={showDeleteInventory}
+        inventoryName={selectedInventory?.item_name}
+        DeleteButton={handleDeleteButton}
+        CancelButton={handleCancelButton}
+      />
+
+      <InventoryTable
+        inventories={inventories}
+        handleDeleteButtonClick={handleDeleteButtonClick}
+      />
     </div>
   );
 }
 
 export default WarehouseInventoryList;
-
