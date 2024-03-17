@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
 function TableRow({ inventory, handleDeleteButtonClick, inventoriesId }) {
+
   return (
     <tr className="inventory-table__row">
       <td>

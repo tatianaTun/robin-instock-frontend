@@ -11,7 +11,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
 .App {
   text-align: center;
   background-color: $light-grey;
@@ -20,6 +23,19 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.form__error{
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  
+}
+.form__success {
+  padding: 20px;
+  font-weight: 600;
+  font-size: 30px;
+  color:$green;
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

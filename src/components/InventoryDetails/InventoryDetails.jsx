@@ -5,7 +5,6 @@ import arrowback from "../../assets/Icons/arrow_back-24px.svg";
 import editModifiedIcon from "../../assets/Icons/edit-modified-24px.svg";
 
 function InventoryDetails({ inventoryItem, warehouseData, inventoriesId }) {
-  console.log(inventoriesId);
 
   const warehouse = warehouseData.find(
     (warehouse) => warehouse.id === inventoryItem.warehouse_id

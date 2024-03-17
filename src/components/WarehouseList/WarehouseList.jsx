@@ -26,13 +26,13 @@ function WarehouseList({ warehouseData, handleDeleteClick, warehouseId }) {
             alt="search icon"
           />
         </div>
-        {/* <link to=`/warehouse${warehouseId}/add`> */}
+        <Link to="/warehouses/add">
         <div className="warehouselist__section">
           <button type="submit" className="warehouselist__button">
             + Add New Warehouse
           </button>
         </div>
-        {/* </link> */}
+        </Link>
       </section>
 
       <div className="warehouselist__content">
@@ -139,13 +139,13 @@ function WarehouseList({ warehouseData, handleDeleteClick, warehouseId }) {
                 alt="delete icon"
                 className="warehouselist__img"
               />
-              {/* <link to="/warehouse/${warehouseId}/edit"> */}
+              <Link to={`/warehouses/${warehouseId}/edit`}>
               <img
                 src={editIcon}
                 alt="edit icon"
                 className="warehouselist__img"
               />
-              {/* </link> */}
+              </Link>
             </div>
           </div>
         </div>

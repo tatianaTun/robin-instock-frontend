@@ -20,7 +20,6 @@ function InventoryList({ inventoriesId }) {
       try {
         const res = await axios.get(`${baseURL}/inventories`);
         setInventories(res.data);
-        console.log(res.data);
       } catch (error) {
         console.error(error);
       }
@@ -32,48 +31,14 @@ function InventoryList({ inventoriesId }) {
       } catch (error) {}
     };
 
-    //   const getInventoryDetails = async () => {
-    //     try {
-    //       const result = await axios.get(
-    //         `${baseURL}/inventories/${inventoriesId}`
-    //       );
-    //       console.log(result);
-    //       setInventoryItem(result.data);
-    //       console.log(result.data);
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   };
 
-    //   getInventoryDetails();
-    // } [inventoriesId]);
 
     getWarehouseList();
 
     getInventories();
   }, []);
 
-  // //fetch list of inventories data by id
-  // const { inventoriesId } = useParams();
 
-  // const [inventoryItem, setInventoryItem] = useState(null);
-  // useEffect(() => {
-  //   const getInventoryDetails = async () => {
-  //     try {
-  //       const result = await axios.get(
-  //         `${baseURL}/inventories/${inventoriesId}`
-  //       );
-  //       console.log(result);
-  //       console.log(inventoriesId);
-  //       setInventoryItem(result.data);
-  //       console.log(result.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   getInventoryDetails();
-  // }, [inventoriesId]);
 
   //delete Inventory item ticket J24XW-12
   const handleDeleteButtonClick = (inventory) => {
@@ -107,7 +72,6 @@ function InventoryList({ inventoriesId }) {
             handleDeleteButtonClick={handleDeleteButtonClick}
             warehouseData={warehouseData}
             inventoriesId={inventoriesId}
-            // inventoryItem={inventoryItem}
           />
         ))}
       </div>
