@@ -113,10 +113,8 @@ function AddWarehousePage() {
             for (let index = 0; index < fields.length; index++) {
                 const element = fields[index];
                 setFunctions[index](true);
-                console.log(index, "true or FUL", element)
                 if (!element) {
-                    console.log(setFunctions[index](false))
-                    console.log(index, "false or MT", element)
+                    setFunctions[index](false)
 
                 }
 
@@ -130,7 +128,6 @@ function AddWarehousePage() {
                 || !formFields.position.value
                 || !formFields.phoneNo.value
                 || !formFields.email.value) {
-                console.log("MISSING FORM FIELD")
 
 
                 return false;
@@ -138,14 +135,12 @@ function AddWarehousePage() {
             return true
         }
 
-        console.log(!isEmailValid(formFields.email.value));
 
         return (true && isFilled() && handleChangeEmail && handleChangePhoneNo);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("email valid?", isEmailAddressValid)
 
         if (isFormValid(event)) {
             const newWarehouse = {
@@ -161,7 +156,6 @@ function AddWarehousePage() {
 
             }
 
-            console.log("Signed up successfully");
             const sendData = async () => {
                 try {
                     const response = await axios.post(`${baseURL}/warehouses`, newWarehouse)
@@ -172,7 +166,7 @@ function AddWarehousePage() {
             }
             setFormSuccessful(true)
             sendData()
-            // setTimeout(() => navigate("/warehouses"), 3000)
+            setTimeout(() => navigate("/warehouses"), 3000)
             return
         } else {
 

@@ -60,7 +60,6 @@ function EditInventory() {
       const requestUrl = `${baseURL}/inventories/${inventoriesId}`;
 
       const result = await axios.get(requestUrl);
-      console.log(result.data);
       if (inventory === null) {
         setInventory(result.data);
       }
@@ -82,7 +81,6 @@ function EditInventory() {
       const requestUrl = `${baseURL}/warehouses/${inventory.warehouse_id}`;
 
       const result = await axios.get(requestUrl);
-      console.log(result.data.warehouse_name);
       setWarehouse(result.data.warehouse_name);
     } catch (error) {
       console.log(error);
@@ -93,7 +91,6 @@ function EditInventory() {
     try {
       const requestUrl = `http://localhost:8080/warehouses`;
       const result = await axios.get(requestUrl);
-      console.log(result.data);
       setWarehouseList(result.data);
     } catch (error) {
       console.log(error);
@@ -104,7 +101,6 @@ function EditInventory() {
     try {
       const requestUrl = `${baseURL}/inventories/${inventoriesId}`;
       const result = await axios.put(requestUrl, inventoryData);
-      console.log(result.data);
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +120,6 @@ function EditInventory() {
 
     if (validateInputs()) {
       // Proceed with form submission
-      console.log(inventoryData);
       editInventory(inventoryData);
       console.log("Form submitted successfully");
     }

@@ -15,13 +15,7 @@ function InventoryCard({
   if (!warehouseData) {
     return <div>Loading...</div>;
   }
-  console.log(warehouseData);
 
-  // console.log(inventory);
-
-  // const warehouseName = warehouseData.find((warehouse) => {
-  //   return warehouse.id === inventory.warehouse_id;
-  // }).warehouse_name;
 
   const warehouse = warehouseData.find(
     (warehouse) => warehouse.id === inventory.warehouse_id
@@ -69,7 +63,7 @@ function InventoryCard({
           alt="Delete"
         />
 
-        <Link to={`/inventories/${inventoriesId}/edit`}>
+        <Link to={`/inventories/${inventory.id}/edit`}>
           <img src={editIcon} alt="Edit" />
         </Link>
       </div>

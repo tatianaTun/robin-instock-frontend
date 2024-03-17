@@ -28,15 +28,12 @@ function EditWarehousePage() {
     const [isEmailAddressFilled, setIsEmailAddressFilled] = useState(true);
 
     const [formSuccessful, setFormSuccessful] = useState(false)
-    // if (!defaultValues){
-    //     return <div> Loading Warehouse Details</div>
-    // }
+ 
     useEffect(() => {
         const getData = async () => {
             try {
                 const warehouseDetails = await axios.get(`${baseURL}/warehouses/${warehouseId}`)
-                // console.log("WARE DATA",warehouseDetails.data)
-                // console.log( Object.keys(warehouseDetails.data))
+
                 setDefaultValues(warehouseDetails.data)
                 setEmail(warehouseDetails.data.contact_email);
                 setPhoneNo(warehouseDetails.data.contact_phone);
@@ -139,10 +136,8 @@ function EditWarehousePage() {
             for (let index = 0; index < fields.length; index++) {
                 const element = fields[index];
                 setFunctions[index](true);
-                // console.log(index, "true or FUL", element)
                 if (!element) {
                     setFunctions[index](false)
-                    // console.log(index, "false or MT", element)
 
                 }
 
@@ -156,7 +151,6 @@ function EditWarehousePage() {
                 || !formFields.position.value
                 || !formFields.phoneNo.value
                 || !formFields.email.value) {
-                // console.log("MISSING FORM FIELD")
 
 
                 return false;
@@ -164,14 +158,12 @@ function EditWarehousePage() {
             return true
         }
 
-        // console.log(!isEmailValid(formFields.email.value));
 
         return (true && isFilled() && handleChangeEmail && handleChangePhoneNo);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log("email valid?", isEmailAddressValid)
 
         if (isFormValid(event)) {
             const newWarehouse = {
@@ -187,7 +179,6 @@ function EditWarehousePage() {
 
             }
 
-            // console.log("Signed up successfully");
             const sendData = async () => {
                 try {
                     const response = await axios.put(`${baseURL}/warehouses/${warehouseId}`, newWarehouse)
@@ -226,7 +217,6 @@ function EditWarehousePage() {
                             Warehouse Name <input type="text" name="warehouseName"
                                 defaultValue={defaultValues.warehouse_name}
                                 placeholder="Warehouse Name"
-                                // className={isWarehouseNameFilled ? "" : "form__input--invalid" }
                                 style={isWarehouseNameFilled ? {} : { border: "1.4px solid red" }}
 
                             />
@@ -235,7 +225,6 @@ function EditWarehousePage() {
                         <label>
                             Street Address <input type="text" name="address"
                                 defaultValue={defaultValues.address} placeholder="Street Address"
-                                // className={isAddressFilled ? "" : "form__input--invalid" }
                                 style={isAddressFilled ? {} : { border: "1.4px solid red" }}
                             />
                         </label>
@@ -244,7 +233,6 @@ function EditWarehousePage() {
                         <label>
                             City <input type="text" name="city" defaultValue={defaultValues.city}
                                 placeholder="City"
-                                // className={isCityFilled ? "" : "form__input--invalid" }
                                 style={isCityFilled ? {} : { border: "1.4px solid red" }}
                             />
                         </label>
@@ -252,7 +240,6 @@ function EditWarehousePage() {
                         <label>
                             Country <input type="text" name="country" placeholder="Country"
                                 defaultValue={defaultValues.country}
-                                // className={isCountryFilled ? "" : "form__input--invalid" } 
                                 style={isCountryFilled ? {} : { border: "1.4px solid red" }}
 
 
@@ -286,19 +273,15 @@ function EditWarehousePage() {
                             Phone Number <input type="text" name="phoneNo"
                                 onChange={handleChangePhoneNo}
                                 value={phoneNo} placeholder="Phone number"
-                                // defaultValue={defaultValues.contact_phone}
                                 style={isPhoneNumberFilled && isPhoneNumberValid ? {} : { border: "1.4px solid red" }}
                             />
                         </label>
                         {isPhoneNumberFilled ? "" : invalidMessage}
-                        {/* {isPhoneNumberValid ? "" : "Input a valid phone number"} */}
                         {isPhoneNumberValid ? "" : " Input a valid phone number"}
                         <label>
                             Email <input type="text" name="email" onChange={handleChangeEmail}
-                                // defaultValue={defaultValues.contact_email}
                                 value={email}
                                 placeholder="Email"
-                                // className={isEmailAddressFilled && isEmailAddressValid ? "" : "form__input--invalid" }
                                 style={isEmailAddressFilled && isEmailAddressValid ? {} : { border: "1.4px solid red" }}
 
 
@@ -311,7 +294,6 @@ function EditWarehousePage() {
                 </div>
                 {formSuccessful ? successMessage : ""}
 
-                {/* <button type="submit"  >Save</button> */}
                 <div className="edit-warehouse__buttons">
                     <Link to={`/warehouses/${warehouseId}`}>
                         <div className="edit-warehouse__cancel-button"> Cancel</div>

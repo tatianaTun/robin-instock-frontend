@@ -16,10 +16,9 @@ function InventoriesPage() {
         const result = await axios.get(
           `${baseURL}/inventories/${inventoriesId}`
         );
-        console.log(result);
-        console.log(inventoriesId);
+       
         setInventoryItem(result.data);
-        console.log(result.data);
+      
       } catch (error) {
         console.log(error);
       }
