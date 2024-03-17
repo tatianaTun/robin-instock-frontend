@@ -124,7 +124,6 @@ function EditInventory() {
     if (validateInputs()) {
       // Proceed with form submission
       editInventory(inventoryData);
-      console.log("Form submitted successfully");
     }
 
     //Navigate back to the inventory details page
