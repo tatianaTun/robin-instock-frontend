@@ -9,6 +9,7 @@ import { baseURL } from "../../consts";
 import axios from "axios";
 
 function InventoryList({ inventoriesId }) {
+
   const [inventories, setInventories] = useState([]);
   const [selectedInventory, setSelectedInventory] = useState(null);
   const [showDeleteInventory, setShowDeleteInventory] = useState(false);

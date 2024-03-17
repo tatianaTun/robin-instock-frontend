@@ -16,6 +16,7 @@ function InventoryCard({
     return <div>Loading...</div>;
   }
   console.log(warehouseData);
+
   // console.log(inventory);
 
   // const warehouseName = warehouseData.find((warehouse) => {

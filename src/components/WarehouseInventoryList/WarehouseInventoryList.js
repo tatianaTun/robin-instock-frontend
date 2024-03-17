@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import InventoryCard from "../InventoryCard/InventoryCard";
 import InventoryTable from "../InventoryTable/InventoryTable";
@@ -82,3 +83,4 @@ function WarehouseInventoryList({ warehouse }) {
 }
 
 export default WarehouseInventoryList;
+

@@ -10,6 +10,7 @@ import axios from "axios";
 import { baseURL } from "./consts.js";
 import Footer from "./components/Footer/Footer.js";
 import WarehousePage from "./pages/WarehousePage/WarehousePage";
+
 import "./App.scss";
 
 function App() {
@@ -34,18 +35,22 @@ function App() {
         <Route path="/" element={<WarehousesPage />} />
         <Route path="/inventories" element={<InventoriesPage />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
+
         {/* <Route path="/warehouses/:warehousesId" element={<WarehousePage />} /> */}
 
         <Route path="/warehouses/:warehouseId" element={<WarehousePage />} />
         <Route path="/" element={<WarehousesPage />} />
+
         <Route
           path="/inventories/:inventoriesId"
           element={<InventoryPage warehouseData={warehouseData} />}
         />
+
         <Route
           path="/inventories/:inventoriesId/edit"
           element={<EditInventoryPage />}
         />
+
       </Routes>
       <Footer />
     </BrowserRouter>

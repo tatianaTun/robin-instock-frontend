@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 // import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
@@ -93,3 +94,4 @@ function WarehousePage() {
 }
 
 export default WarehousePage;
+
