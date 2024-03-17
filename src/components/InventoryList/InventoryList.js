@@ -38,7 +38,6 @@ function InventoryList({ inventoriesId }) {
     getInventories();
   }, []);
 
-console.log(warehouseData,inventories)
 
   //delete Inventory item ticket J24XW-12
   const handleDeleteButtonClick = (inventory) => {

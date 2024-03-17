@@ -52,7 +52,6 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
           `${baseURL}/warehouses/${warehouse.id}/inventories`
         );
         setInventories(res.data);
-        console.log(res.data, "INVentories")
       } catch (error) {
         console.error(error);
       }
@@ -61,7 +60,7 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
       try {
         const result = await axios.get(`${baseURL}/warehouses`);
         setwarehouseData(result.data);
-      } catch (error) { }
+      } catch (error) {}
     };
     getWarehouseList();
     getInventories();
@@ -84,18 +83,18 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
       );
 
       setShowDeleteInventory(false);
-    } catch (error) { }
+    } catch (error) {}
   };
 
   const newInventories = []
-  for (let index = 0; index < inventories.length - 1; index++) {
-    const element = inventories[index];
-    element.warehouse_name = warehouse.warehouse_name;
-    element.warehouse_id = warehouse.id;
-    newInventories.push(element)
+for (let index = 0; index < inventories.length-1; index++) {
+  const element = inventories[index];
+  element.warehouse_name = warehouse.warehouse_name;
+  element.warehouse_id = warehouse.id;
+  newInventories.push(element)
 
-
-  }
+  
+}
   return (
     <div className="inventory-list">
       <WarehouseInventoryHeader

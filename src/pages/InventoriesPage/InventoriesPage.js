@@ -29,7 +29,9 @@ function InventoriesPage() {
 
   return (
     <main className="inventory-page">
-      <InventoryList inventoriesId={inventoriesId} />
+      <InventoryList 
+      inventoriesId={inventoriesId} 
+      />
     </main>
   );
 }
