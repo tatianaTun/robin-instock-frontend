@@ -29,10 +29,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<InventoryPage />} />
+        <Route path="/" element={<WarehousesPage />} />
         <Route path="/inventories" element={<InventoriesPage />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
-        {/* <Route path="/warehouses/:warehousesId" element={<WarehousesPage />} /> */}
+        {/* <Route path="/warehouses/:warehousesId" element={<WarehousePage />} /> */}
         <Route path="/inventories" element={<InventoriesPage />} />
         <Route
           path="/inventories/:inventoriesId"
