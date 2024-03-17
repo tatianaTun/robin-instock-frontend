@@ -1,9 +1,14 @@
 @import './colors';
 @import './mixins';
+@import './_variables';
 
 * {
     color: $primary-text-color;
     box-sizing: border-box;
+}
+
+body {
+    background-color: $light-grey;
 }
 
 .form-input {

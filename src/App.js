@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer.js";
 import WarehousePage from "./pages/WarehousePage/WarehousePage";
 
 import "./App.scss";
+import "./styles/partials/_globals.scss";
 import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage.js";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage.js";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage.js";
