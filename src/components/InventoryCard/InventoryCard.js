@@ -2,10 +2,19 @@ import forwardIcon from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import { Link } from "react-router-dom";
+import React from "react";
 import "./InventoryCard.scss";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
-function InventoryCard({ inventory, handleDeleteButtonClick, warehouseData }) {
+function InventoryCard({
+  inventory,
+  handleDeleteButtonClick,
+  warehouseData,
+  inventoriesId,
+}) {
+  if (!warehouseData) {
+    return <div>Loading...</div>;
+  }
   console.log(warehouseData);
   // console.log(inventory);
 
@@ -58,7 +67,10 @@ function InventoryCard({ inventory, handleDeleteButtonClick, warehouseData }) {
           src={deleteIcon}
           alt="Delete"
         />
-        <img src={editIcon} alt="Edit" />
+
+        <Link to={`/inventories/${inventoriesId}/edit`}>
+          <img src={editIcon} alt="Edit" />
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+
+@import '../../styles/partials/colors';
+@import '../../styles/partials/mixins';
+
+.warehouse-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    border-top: 1px solid $border-color;
+
+    &__sub {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    &__field {
+        flex: 1
+    }
+
+    &__label {
+        color: $secondary-text-color;
+    }
+}
+
+@include tablet {
+    .warehouse-detail {
+        flex-direction: row;
+
+        &__field {
+            flex: unset;
+
+            &.large {
+                flex: 1;
+            }
+        }
+    }
+}

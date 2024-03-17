@@ -130,7 +130,7 @@ function EditInventory() {
     }
 
     //Navigate back to the inventory details page
-    navigate("/"); //pick the right navigation path
+    navigate("/inventories"); //pick the right navigation path
   }
 
   function statusHandle(value) {
@@ -153,7 +153,7 @@ function EditInventory() {
   return (
     <div className="edit-inventory">
       <div className="edit-inventory__header">
-        <Link to="/inventories/:id">
+        <Link to={`/inventories/${inventoriesId}`}>
           <img src={backIcon}></img>
         </Link>
         <h1>Edit Inventory Item</h1>
@@ -254,8 +254,11 @@ function EditInventory() {
             </div>
           </div>
         </div>
+
         <div className="edit-inventory__buttons">
-          <button className="edit-inventory__cancel-button">Cancel</button>
+          <Link to={`/inventories`}>
+            <button className="edit-inventory__cancel-button">Cancel</button>
+          </Link>
           <button type="submit" className="edit-inventory__submit-button">
             Save
           </button>
