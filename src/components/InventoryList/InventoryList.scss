@@ -1,26 +1,12 @@
 @import '../../styles/partials/colors';
 @import '../../styles/partials/mixins';
 
-.inventory-list {
-    background-color: $white-color;
-    margin: 0 16px;
-    box-shadow: 0px 1px 2px 2px #00000015;
-    border-radius: 4px;
-}
 
 @include tablet {
     .inventory-list {
-        margin: 0 24px;
 
         &__cards {
             display: none;
         }
-    }
-}
-
-@include desktop {
-    .inventory-list {
-        margin: 0 auto;
-        width: 80%;
     }
 }
