@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 // import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
@@ -21,8 +20,6 @@ function WarehousePage() {
     contact_email: "paujla@instock.com",
   });
 
-
-
   useEffect(() => {
     const getWarehouse = async () => {
       try {
@@ -36,18 +33,11 @@ function WarehousePage() {
     getWarehouse();
   }, [warehouseId]);
 
-
-
   return (
     <main className="warehouse-inventory-page">
-      <WarehouseInventoryList
-        warehouse={warehouse}
-        
-      />
-      
+      <WarehouseInventoryList warehouse={warehouse} warehouseId={warehouseId} />
     </main>
   );
 }
 
 export default WarehousePage;
-
