@@ -5,8 +5,9 @@ import './WarehouseInventoryList.scss';
 import axios from 'axios';
 import { baseURL } from '../../consts';
 import WarehouseInventoryHeader from '../WarehouseInventoryHeader/WarehouseInventoryHeader';
-
+import WarehouseDetail from '../WarehouseDetail/WarehouseDetail';
 function WarehouseInventoryList({ warehouse }) {
+    const [warehouseData, setwarehouseData] = useState([]);
     const [inventories, setInventories] = useState([{
         id: 68,
         warehouse_id: 7,
@@ -37,7 +38,6 @@ function WarehouseInventoryList({ warehouse }) {
         status: 'Out of Stock',
         quantity: 0,
     }]);
-
     useEffect(() => {
         const getInventories = async () => {
             try {
@@ -47,20 +47,27 @@ function WarehouseInventoryList({ warehouse }) {
             } catch (error) {
                 console.error(error);
             }
-        }
-
+        };
+        const getWarehouseList = async () => {
+            try {
+                const result = await axios.get(`${baseURL}/warehouses`);
+                setwarehouseData(result.data);
+            } catch (error) { }
+        };
+        getWarehouseList();
         getInventories();
     }, [warehouse.id])
-
-    return (
-        <div className='inventory-list'>
-            <WarehouseInventoryHeader warehouseName={warehouse.warehouse_name} />
-            <div className='inventory-list__cards'>
-                {inventories.map(inventory => <InventoryCard key={inventory.id} inventory={inventory} />)}
-            </div>
-            <InventoryTable inventories={inventories} />
+   
+return (
+    <div className='inventory-list'>
+        <WarehouseInventoryHeader warehouseName={warehouse.warehouse_name} />
+        <WarehouseDetail warehouse={warehouse} />
+        <div className='inventory-list__cards'>
+            {inventories.map(inventory => <InventoryCard key={inventory.id} inventory={inventory} warehouseData={warehouseData} />)}
         </div>
-    )
+        <InventoryTable inventories={inventories} />
+    </div>
+)
 }
 
 export default WarehouseInventoryList;
