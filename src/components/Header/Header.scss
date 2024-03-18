@@ -30,6 +30,11 @@
     color: $white;
     padding: 10px 50px;
     border-radius: 30px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline; /* Underline the link on hover */
+    }
   }
   &__warehouses-link--active,
   &__inventories-link--active {

@@ -25,7 +25,7 @@ function EditInventory() {
   const [category, setCategory] = useState(null);
   const [status, setStatus] = useState(null);
   const [warehouse_id, setWarehouse_id] = useState(null);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState("0");
 
   const [warehouse, setWarehouse] = useState(null);
   const [warehousesList, setWarehouseList] = useState([]);
@@ -60,15 +60,18 @@ function EditInventory() {
       const requestUrl = `${baseURL}/inventories/${inventoriesId}`;
 
       const result = await axios.get(requestUrl);
+      const fetchedInventory = result.data;
       if (inventory === null) {
-        setInventory(result.data);
+        setInventory(fetchedInventory);
       }
-      setItem_name(inventory.item_name);
-      setDescription(inventory.description);
-      setCategory(inventory.category);
-      setStatus(inventory.status);
-      setWarehouse_id(inventory.warehouse_id);
-      setQuantity(inventory.quantity);
+      if (fetchedInventory !== null) {
+        setItem_name(fetchedInventory.item_name);
+        setDescription(fetchedInventory.description);
+        setCategory(fetchedInventory.category);
+        setStatus(fetchedInventory.status);
+        setWarehouse_id(fetchedInventory.warehouse_id);
+        setQuantity(fetchedInventory.quantity);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -115,13 +118,12 @@ function EditInventory() {
       description: description,
       category: category,
       status: status,
-      quantity: inventory.quantity,
+      quantity: quantity,
     };
 
     if (validateInputs()) {
       // Proceed with form submission
       editInventory(inventoryData);
-      console.log("Form submitted successfully");
     }
 
     //Navigate back to the inventory details page
@@ -162,7 +164,6 @@ function EditInventory() {
                 <label>Item Name</label>
                 <input
                   type="text"
-                  defaultValue={item_name}
                   onChange={(e) => setItem_name(e.target.value)}
                   placeholder={inventory.item_name}
                 ></input>
@@ -171,8 +172,8 @@ function EditInventory() {
                 <label>Description</label>
                 <textarea
                   type="text"
-                  defaultValue={inventory.description}
                   onChange={(e) => setDescription(e.target.value)}
+                  placeholder={inventory.description}
                 ></textarea>
               </div>
               <div className="edit-inventory__card">

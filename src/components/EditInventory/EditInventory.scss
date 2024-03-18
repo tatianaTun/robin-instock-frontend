@@ -126,19 +126,28 @@
 @include tablet {
   .edit-inventory {
     top: 110px;
+    width: calc(100% - 64px);
+    margin: 0 32px;
+
+    &__header {
+      padding: 20px 40px;
+    }
 
     &__inputs-container {
       display: flex;
+      padding:20px 0;
     }
 
     &__item-details {
       border-right: 1px solid $cloud;
       border-bottom: none;
       width: 50%;
+      padding: 0 20px;
     }
 
     &__item-availability {
       width: 50%;
+      padding: 0 20px;
     }
 
     &__radio-container {
@@ -168,4 +177,11 @@
 }
 
 @include desktop {
+  .edit-inventory {
+    top: 110px;
+    width: calc(100% - 126px);
+    margin: 0 63px;
+
+
+  }
 }
