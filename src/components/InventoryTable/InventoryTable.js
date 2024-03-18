@@ -6,8 +6,7 @@ import "./InventoryTable.scss";
 import { Link } from "react-router-dom";
 import InventoryStatus from "../InventoryStatus/InventoryStatus";
 
-function TableRow({ inventory, handleDeleteButtonClick, inventoriesId }) {
-
+function TableRow({ inventory, handleDeleteButtonClick, inventoriesId, warehouse }) {
   return (
     <tr className="inventory-table__row">
       <td>
@@ -52,6 +51,7 @@ function InventoryTable({
   inventories,
   handleDeleteButtonClick,
   inventoriesId,
+  warehouse
 }) {
   return (
     <table className="inventory-table">
@@ -94,6 +94,7 @@ function InventoryTable({
             inventory={inventory}
             handleDeleteButtonClick={handleDeleteButtonClick}
             inventoriesId={inventoriesId}
+            warehouse={warehouse}
           />
         ))}
       </tbody>

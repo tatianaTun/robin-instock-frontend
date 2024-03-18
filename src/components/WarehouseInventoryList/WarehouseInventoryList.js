@@ -49,7 +49,7 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
     const getInventories = async () => {
       try {
         const res = await axios.get(
-          `${baseURL}/inventories?warehouse_id=${warehouse.id}`
+          `${baseURL}/warehouses/${warehouse.id}/inventories`
         );
         setInventories(res.data);
       } catch (error) {
@@ -86,6 +86,15 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
     } catch (error) {}
   };
 
+  const newInventories = []
+for (let index = 0; index < inventories.length-1; index++) {
+  const element = inventories[index];
+  element.warehouse_name = warehouse.warehouse_name;
+  element.warehouse_id = warehouse.id;
+  newInventories.push(element)
+
+  
+}
   return (
     <div className="inventory-list">
       <WarehouseInventoryHeader
@@ -94,19 +103,20 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
       />
       <WarehouseDetail warehouse={warehouse} />
       <div className="inventory-list__cards">
-        {inventories.map((inventory) => (
+        {newInventories.map((inventory) => (
           <InventoryCard
             key={inventory.id}
             inventory={inventory}
             warehouseData={warehouseData}
             inventoriesId={inventory.id}
             handleDeleteButtonClick={handleDeleteButtonClick}
+            warehouse={warehouse}
           />
         ))}
       </div>
 
       <DeleteInventoryModal
-        inventories={inventories}
+        inventories={newInventories}
         displayPage={showDeleteInventory}
         inventoryName={selectedInventory?.item_name}
         DeleteButton={handleDeleteButton}
@@ -114,8 +124,9 @@ function WarehouseInventoryList({ warehouse, warehouseId }) {
       />
 
       <InventoryTable
-        inventories={inventories}
+        inventories={newInventories}
         handleDeleteButtonClick={handleDeleteButtonClick}
+        warehouse={warehouse}
       />
     </div>
   );

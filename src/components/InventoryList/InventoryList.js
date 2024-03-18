@@ -39,7 +39,6 @@ function InventoryList({ inventoriesId }) {
   }, []);
 
 
-
   //delete Inventory item ticket J24XW-12
   const handleDeleteButtonClick = (inventory) => {
     setSelectedInventory(inventory);
@@ -66,12 +65,18 @@ function InventoryList({ inventoriesId }) {
       <InventoryListHeader />
       <div className="inventory-list__cards">
         {inventories.map((inventory) => (
+        //  const warehouse = warehouseData.find((warehouse)=> {
+        //     return    warehouse.id === inventory.warehouse_id
+        //   })
           <InventoryCard
             key={inventory.id}
             inventory={inventory}
             handleDeleteButtonClick={handleDeleteButtonClick}
             warehouseData={warehouseData}
             inventoriesId={inventoriesId}
+            warehouse={warehouseData.find((warehouse)=> {
+              return    warehouse.id === inventory.warehouse_id
+            })}
           />
         ))}
       </div>
@@ -79,6 +84,9 @@ function InventoryList({ inventoriesId }) {
         inventories={inventories}
         handleDeleteButtonClick={handleDeleteButtonClick}
         inventoriesId={inventoriesId}
+        // warehouse={warehouseData.find((warehouse)=> {
+        //   return    warehouse.id === inventory.warehouse_id
+        // })}
       />
       <DeleteInventoryModal
         inventories={inventories}
