@@ -4,8 +4,8 @@
 
 .edit-inventory {
   box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 0.5);
-  position: absolute;
-  top: 150px;
+  position: relative;
+  top: -50px;
   width: calc(100% - 40px); /* 100% width minus 20px left and right margins */
   margin: 0 20px;
   background-color: white;
@@ -125,7 +125,7 @@
 
 @include tablet {
   .edit-inventory {
-    top: 110px;
+    top: -50px;
     width: calc(100% - 64px);
     margin: 0 32px;
 
@@ -178,10 +178,8 @@
 
 @include desktop {
   .edit-inventory {
-    top: 110px;
+    top: -50px;
     width: calc(100% - 126px);
     margin: 0 63px;
-
-
   }
 }

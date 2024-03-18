@@ -9,8 +9,8 @@ label {
 }
 .edit-warehouse {
     box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 0.5);
-    position: absolute;
-    top: 150px;
+    position: relative;
+    top: -50px;
     width: calc(100% - 40px);
     /* 100% width minus 20px left and right margins */
     margin: 0 20px;
@@ -157,7 +157,7 @@ label {
 
 @include tablet {
     .edit-warehouse {
-        top: 110px;
+        top: -50px;
 
         &__form {
             // flex-direction: row;
